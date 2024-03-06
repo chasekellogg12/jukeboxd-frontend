@@ -1,0 +1,28 @@
+.settings-container {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .input-section {
+    margin-bottom: 20px;
+  }
+  
+  .input-section label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .tracks-section {
+    margin-bottom: 20px;
+  }
+  
+  .tracks-section div {
+    margin-bottom: 10px;
+  }
+  
+  .change-track-button {
+    margin-left: 10px;
+  }

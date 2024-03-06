@@ -1,0 +1,25 @@
+.post-wall-container {
+    display: flex;
+    justify-content: center;
+}
+
+.post-wall {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 60%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title-container {
+    display: flex;
+    justify-content: flex-start; /* Align the section title horizontally */
+    width: 60%; /* Set the same width as the top-four-wall container */
+    margin: 0 auto;  /* Center the section title container */
+}

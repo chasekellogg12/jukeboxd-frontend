@@ -1,0 +1,43 @@
+.post-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.post-author {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.post-author-name {
+    font-weight: bold;
+}
+
+.post-author-username {
+    font-weight: 250;
+}
+
+.post-date {
+    color: #555;
+    font-weight: 250;
+}
+
+.post-content {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+    line-height: 1.4;
+}
