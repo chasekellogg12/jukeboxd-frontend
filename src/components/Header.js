@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import UserService from '../services/UserService';
 import './TrackSearch.css';
+import logo from '../assets/font/newLogo.png';
+import logo2 from '../assets/font/logo2.png';
 
 
 export default function Header({ updateHeader }) { // we need to re-render the header when create account happens 
@@ -45,12 +47,13 @@ export default function Header({ updateHeader }) { // we need to re-render the h
     };
     
     return (
-        <div className='z-40 flex items-center justify-center bg-transparent min-h-16 text-h-grey poppins'>
+        <div className='z-50 sticky flex items-center justify-center text-[#C6AEF2] bg-transparent min-h-16 abrilfatface'>
             <div className='flex items-center justify-between w-full'>
-                <button onClick={() => navigate("/")}>
-                    Home
+                <button className='flex items-end space-x-0.25 italic text-white abrilfatface hover:text-orange-400' onClick={() => navigate("/")}>
+                    <img className='rounded-full w-7' src={logo2}></img>
+                    <span className='text-3xl'>ukeboxd</span>
                 </button>
-                <ul className="flex space-x-6">
+                <ul className="flex space-x-6 ">
                     {/* <li>
                         <button onClick={() => navigate("/list-users")}>
                             List Users
@@ -58,35 +61,35 @@ export default function Header({ updateHeader }) { // we need to re-render the h
                     </li> */}
                     {loggedIn &&     // clicking this should bring up popup
                         <li>
-                            <button onClick={() => navigate('/create-post')}>
+                            <button className='hover:text-[#4950D5]' onClick={() => navigate('/create-post')}>
                                 Create Post
                             </button>
                         </li>
                     }
                     {loggedIn && 
                         <li>
-                            <button onClick={() => handleProfile()}>
+                            <button className='hover:text-[#4950D5]' onClick={() => handleProfile()}>
                                 Profile
                             </button>
                         </li>
                     }  
                     {loggedIn && 
                         <li>
-                            <button onClick={() => handleLogout()}>
+                            <button className='hover:text-[#4950D5]' onClick={() => handleLogout()}>
                                 Logout
                             </button>
                         </li>
                     }   
                     {!loggedIn &&    
                         <li>
-                            <button onClick={() => navigate("/login")}>
+                            <button className='hover:text-[#4950D5]' onClick={() => navigate("/login")}>
                                 Login
                             </button>
                         </li>
                     }
                     {!loggedIn &&    
                         <li>
-                            <button onClick={() => navigate("/create-user")}>
+                            <button className='hover:text-[#4950D5]' onClick={() => navigate("/create-user")}>
                                 Sign Up
                             </button>
                         </li>

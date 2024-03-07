@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import UserService from '../services/UserService';
 import PostWall from '../components/PostWall';
 import { useNavigate } from 'react-router-dom';
+import background from '../assets/font/backsplash.jpeg';
 import "../styles/home.css";
 
 const Home = ({ updateHeader }) => {
@@ -56,9 +57,9 @@ const Home = ({ updateHeader }) => {
     return (
         <div className='flex flex-col items-center'>
             <div
-                className="started-backdrop block md:h-[650px] md:mt-[-5%] md:max-h-[650px] md:w-[950px] md:m-auto max-h-[250px] h-[250px]"
+                className="started-backdrop block md:h-[550px] md:mt-[-4%] md:max-h-[550px] md:w-[850px] md:m-auto max-h-[250px] h-[250px] justify-center"
                 style={{
-                backgroundImage: `url(https://a.ltrbxd.com/resized/sm/upload/tx/hy/xj/lw/sanctuary-2023-1200-1200-675-675-crop-000000.jpg?v=b1d98010cd)`,
+                backgroundImage: `url(https://th.bing.com/th/id/OIG3.vODywcOaLE6vPBCreyBm?w=1024&h=1024&rs=1&pid=ImgDetMain)`,
                 }}>
             </div>
             <div
@@ -69,7 +70,7 @@ const Home = ({ updateHeader }) => {
                 mt-[5%]
                 md:mt-[-15%] 
                 gap-2 
-                z-50">
+                z-40">
                     <div className='flex justify-center welcome-message '>
                         {greeting}
                     </div>

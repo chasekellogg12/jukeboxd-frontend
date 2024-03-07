@@ -28,7 +28,8 @@ const App = () => {
       <div className='app-container bg-c-grey poppins'>
         <div className='app-content'>
           <Header key={headerKey} updateHeader={updateHeader}/>
-          <div className='py-5'>
+          <div className=''>
+          
               <Routes>
                 <Route path='/' element={<Home updateHeader={updateHeader}/>}></Route>
                 <Route path='/create-user' element={localStorage.getItem('jwtToken') ? <Navigate to='/'/> : <CreateUser updateHeader={updateHeader}/>}></Route>

@@ -67,7 +67,7 @@ export default function Post(props) {
             // likes
             // date
     return (
-        <div className=' post-container flex flex-col justify-between border border-sh-grey p-1 m-1 bg-c-grey text-sh-grey rounded-lg shadow-[0_0_10px_rgba(0,0,0,0.1)]'>
+        <div className='flex flex-col justify-between p-1 m-1 border rounded-lg shadow hover:shadow-lg post-container border-[#4950D5] bg-c-grey text-sh-grey shadow-sh-grey'>
             <div className='flex content-container'>
                 <div className='w-1/6 m-2 cover-art-container'>
                     <img src={postSubjectBasicInfo.albumCoverArt} alt='track cover art' style={{borderRadius: '8px'}}></img>

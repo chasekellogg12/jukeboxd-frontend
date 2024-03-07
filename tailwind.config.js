@@ -14,7 +14,8 @@ module.exports = {
         "l-white": "#99AABB",
         "p-white": "#def",
   
-        "h-grey": "#91A0AF",
+        "h-grey": "#C6AEF2",
+        // "#91A0AF"
         // bg dropdown menu
         "drop-grey": "#89a",
         //text dropdown menu
@@ -26,7 +27,8 @@ module.exports = {
         //used on borders on homepage
         "b-grey": "#456",
         //subheadings in home
-        "sh-grey": "#9ab",
+        "sh-grey": "#C6AEF2",
+        //"#9ab",
         // poster border color
         "pb-grey": "#def",
         "si-black": "#14181c",
@@ -41,7 +43,8 @@ module.exports = {
         // cast bg color
         'cast-grey': '#283038',
         // main background
-        'c-grey': '#14181cfa'
+        //'c-grey': '#14181cfa',
+        'c-grey': '#070c1b'
       },
     },
   },
