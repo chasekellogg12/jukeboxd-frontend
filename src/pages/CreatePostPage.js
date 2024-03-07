@@ -48,7 +48,7 @@ export default function CreatePostPage() {
     return ( // typical form
 
         <div className='flex flex-col items-center justify-center text-h-grey'>
-            <div className='flex flex-col items-center justify-center w-2/5 p-4 border rounded-lg create-post-container border-h-grey'>
+            <div className='flex flex-col items-center justify-center p-4 border rounded-lg create-post-container border-h-grey'>
                 {!postSubject ? 
                     <div className='flex flex-col items-center'>
                         <h3 className='mb-3 text-xl text-white abrilfatface'>What track do you want to review?</h3>

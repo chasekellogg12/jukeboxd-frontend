@@ -74,7 +74,8 @@ const Home = ({ updateHeader }) => {
                         {greeting}
                     </div>
             </div>
-            <div className='flex-col items-center w-3/5 home-container'>
+            {/* readd w-3/5 */}
+            <div className='flex-col items-center home-container'>
                 
                 {/* Pass listOfUsers to PostWall only if it's not empty */}
                 <div className='flex justify-center recent-posts'>

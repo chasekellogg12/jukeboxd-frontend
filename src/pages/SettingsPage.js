@@ -128,7 +128,7 @@ export default function SettingsPage() {
         // the 4 movies are set with a button next to them to change them. Hitting this button opens the popup with just 'Pick a favorite track' and a textbox.
             // typing in this textbox brings up search results with the song name and its year. Clicking on a search result 
             <div className='flex flex-col items-center justify-center settings-page text-h-grey'>
-                <div className='flex flex-col items-center justify-center w-3/5 p-4 space-y-4 border rounded-lg settings-container border-h-grey'>
+                <div className='flex flex-col items-center justify-center w-full p-4 space-y-4 border rounded-lg settings-container border-h-grey'>
                     <div className='text-xl text-white title abrilfatface'>User Settings</div>
                     <form className='flex flex-col items-center justify-center space-y-3 settings-info-container'>
                         <label className='space-x-2 space-y-1'>

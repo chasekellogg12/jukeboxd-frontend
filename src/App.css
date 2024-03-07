@@ -5,6 +5,25 @@
   min-height: 100vh;
 }
 
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  min-height: 100vh; /* Optional: for full height */
+}
+
+.app-content {
+  width: 850px; /* Fixed width for your content */
+  /* Other styles for your content */
+}
+
+@media (max-width: 850px) {
+  .app-content {
+      width: 100%; /* Full width on smaller screens */
+      /* Other responsive adjustments */
+  }
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

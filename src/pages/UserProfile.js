@@ -107,7 +107,7 @@ const UserProfile = () => {
         // sections contianer has things in a column depending on what displaySection is
     return (
         <div className='flex flex-col items-center justify-center space-y-6 profile-container'>
-            <div className='flex items-center justify-between w-3/5 p-4 text-white rounded-lg header-container bg-b-blue'>
+            <div className='flex items-center justify-between w-full p-4 text-white rounded-lg header-container bg-b-blue'>
                 <div className='flex items-center space-x-4 avatar-name-container'>
                     <div className='avatar'>
                         <div
@@ -144,13 +144,13 @@ const UserProfile = () => {
                     </button>
                 </div>
             </div>
-            <div className='flex justify-around w-3/5 p-4 text-white rounded-lg buttons-container bg-b-blue'>
+            <div className='flex justify-around w-full p-4 text-white rounded-lg buttons-container bg-b-blue'>
                 <button className='abrilfatface' onClick={() => setDisplaySection(1)} style={{ color: displaySection === 1 ? 'white' : '#9ab' }}>Profile</button>
                 <button className='abrilfatface' onClick={() => setDisplaySection(2)} style={{ color: displaySection === 2 ? 'white' : '#9ab' }}>Recent Activity</button>
                 <button className='abrilfatface' onClick={() => setDisplaySection(3)} style={{ color: displaySection === 3 ? 'white' : '#9ab' }}>Reviews</button>
                 <button className='abrilfatface' onClick={() => setDisplaySection(4)} style={{ color: displaySection === 4 ? 'white' : '#9ab' }}>Likes</button>
             </div>
-            <div className='flex-col w-3/5 p-4 rounded-lg sections-container bg-b-blue'>
+            <div className='flex-col w-full p-4 rounded-lg sections-container bg-b-blue'>
                 {displaySection === 1 && 
                     <div className='flex-col space-y-6 section'>
                         <div className='flex-col top-four-section'>

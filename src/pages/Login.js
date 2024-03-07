@@ -56,7 +56,7 @@ export default function Login({ updateHeader }) {
             // e.target is the HTML element that triggered the event (the form element inpout box)
             // e.target.value is the current value of the form element when the event occurred 
             <div className='flex flex-col items-center justify-center text-h-grey abrilfatface'>
-                <div className='flex flex-col items-center justify-center w-2/5 p-4 border rounded-lg login-container border-h-grey'>
+                <div className='flex flex-col items-center justify-center w-3/5 p-4 border rounded-lg login-container border-h-grey'>
                     <form onSubmit={handleSubmit} className='flex flex-col items-center space-y-3'> 
                         <label>
                             <h3>Username</h3>

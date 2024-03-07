@@ -46,7 +46,7 @@ export default function Header({ updateHeader }) { // we need to re-render the h
     
     return (
         <div className='z-40 flex items-center justify-center bg-transparent min-h-16 text-h-grey poppins'>
-            <div className='flex items-center justify-between w-3/5'>
+            <div className='flex items-center justify-between w-full'>
                 <button onClick={() => navigate("/")}>
                     Home
                 </button>

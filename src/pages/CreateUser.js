@@ -103,7 +103,7 @@ export default function CreateUser({ updateHeader }) {
 
 
             <div className='flex flex-col items-center justify-center text-h-grey abrilfatface'>
-                <div className='flex flex-col items-center justify-center w-2/5 p-4 border rounded-lg login-container border-h-grey'>
+                <div className='flex flex-col items-center justify-center w-3/5 p-4 border rounded-lg login-container border-h-grey'>
                     <form onSubmit={handleSubmit} className='flex flex-col items-center space-y-3'> 
                         <label>
                             <h3>Name</h3>
