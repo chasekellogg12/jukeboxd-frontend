@@ -9,6 +9,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { React, useState } from 'react';
 import './App.css';
 import SettingsPage from './pages/SettingsPage';
+import { ToastContainer } from 'react-toastify';
+
 
 // we need a global variable that has the JWT token. If the user is not authenticated, this will have ' ' 
 
@@ -22,6 +24,7 @@ const App = () => {
 
   return ( // if a user can't see a page when they are logged in or logged out, redirect home accordingly
     <BrowserRouter>
+      <ToastContainer />
       <div className='App bg-c-grey poppins'>
         <Header key={headerKey} updateHeader={updateHeader}/>
         <div className='py-5'>
