@@ -51,11 +51,11 @@ export default function Header({ updateHeader }) { // we need to re-render the h
                     Home
                 </button>
                 <ul className="flex space-x-6">
-                    <li>
+                    {/* <li>
                         <button onClick={() => navigate("/list-users")}>
                             List Users
                         </button>
-                    </li>
+                    </li> */}
                     {loggedIn &&     // clicking this should bring up popup
                         <li>
                             <button onClick={() => navigate('/create-post')}>

@@ -33,9 +33,10 @@ const App = () => {
               <Route path='/create-user' element={localStorage.getItem('jwtToken') ? <Navigate to='/'/> : <CreateUser updateHeader={updateHeader}/>}></Route>
               <Route path='/login' element={localStorage.getItem('jwtToken') ? <Navigate to='/'/> : <Login updateHeader={updateHeader}/>}></Route>
               <Route path='/create-post' element={localStorage.getItem('jwtToken') ? <CreatePostPage/> : <Navigate to='/'/>}></Route>
-              <Route path='/list-users' element={<ListUsers />}></Route>
+              {/* <Route path='/list-users' element={<ListUsers />}></Route> */}
               <Route path="/profile/:thisUsername" element={<UserProfile/>} />
               <Route path='/settings' element={localStorage.getItem('jwtToken') ? <SettingsPage/> : <Navigate to='/'/>}></Route>
+              <Route path='*' element={<Navigate to='/' />} />
             </Routes>
         </div>
       </div>
