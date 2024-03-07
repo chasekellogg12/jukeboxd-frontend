@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import UserService from '../services/UserService';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function Login({ updateHeader }) { 
     const [username, setUsername] = useState('');
@@ -29,7 +30,20 @@ export default function Login({ updateHeader }) {
 
             console.log('User logged in.'); // ok so now we have their token. Now, we can redirect the user to /list-users. make a GET request to /home
         } catch(error) {
-            console.error('Error logging in user', error);
+            if (error.response && error.response.status === 401) {
+                toast.error("Error: Your username and password combination is incorrect!", {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            } else {
+                // Handle other types of errors
+                toast.error("An error occurred!");
+            }
         }
 
     };
@@ -46,14 +60,14 @@ export default function Login({ updateHeader }) {
                     <form onSubmit={handleSubmit} className='flex flex-col items-center space-y-3'> 
                         <label>
                             <h3>Username</h3>
-                            <input className='text-black rounded-md' type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
+                            <input className='p-1 text-black lowercase rounded-md poppins' maxLength='15' type='text' value={username} onChange={(e) => setUsername(e.target.value.toLowerCase())} />
                         </label>
                         <label>
                             <h3>Password</h3>
-                            <input className='text-black rounded-md' type='text' value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input className='p-1 text-black rounded-md poppins' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                         </label>
                         <button type='submit' className='w-1/2 px-2 py-1 text-white rounded-lg bg-b-green hover:bg-green-600 poppins'> 
-                            Login 
+                            Login
                         </button>
                     </form>
                 </div>
