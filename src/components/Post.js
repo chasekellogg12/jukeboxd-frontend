@@ -99,15 +99,16 @@ export default function Post(props) {
 
             <div className='flex justify-between m-2 extra-container'>
                 <div className='flex items-center likes-container'>
-                    {(loggedInUserInfo && !hasLiked) ?
+                    {(!hasLiked) ?
                         <button className='w-5 h-5 like-button' onClick={handleLikeClick}>
-                            <img src={thumbsUp} alt='Like icon'></img>
+                            <svg className='hover:stroke-hov-blue' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6AEF2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
                         </button> :
                         <button className='w-5 h-5 like-button'>
-                            <img src={thumbsUpFilled} alt='Filled icon'></img>
+                            {/* <img src={thumbsUpFilled} alt='Filled icon'></img> */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hov-blue" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
                         </button>
                     } 
-                    <span className='ml-2 text-sm text-sh-grey'>{usernamesWhoLiked.length}</span>
+                    <div className='ml-2 text-sm text-sh-grey'>{usernamesWhoLiked.length}</div>
                 </div>
                 <span className='text-sm italic font-light post-date'>{relativeTime}</span>
             </div>
