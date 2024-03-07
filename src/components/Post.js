@@ -6,6 +6,7 @@ import { formatDistanceToNow } from 'date-fns';
 import logo from '../assets/font/logo512.png';
 import thumbsUp from '../assets/font/thumbsUp.png';
 import thumbsUpFilled from '../assets/font/thumbsUpFilled.png';
+import { toast } from 'react-toastify';
 
 
 export default function Post(props) {
@@ -32,6 +33,19 @@ export default function Post(props) {
     }, [loggedInUserInfo, stringUsernamesWhoLiked]) // play around with this so that a like updates the post
 
     const handleLikeClick = async () => {
+        if (!loggedInUserInfo) {
+            toast.error("Error: You must be signed in to like a post!", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        
         try {
             props.onLikeClick(postId) 
         } catch(error) {
@@ -105,10 +119,10 @@ export default function Post(props) {
                         </button> :
                         <button className='w-5 h-5 like-button'>
                             {/* <img src={thumbsUpFilled} alt='Filled icon'></img> */}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hov-blue" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                            <svg className='stroke-hov-blue' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
                         </button>
                     } 
-                    <div className='ml-2 text-sm text-sh-grey'>{usernamesWhoLiked.length}</div>
+                    <div className='mt-1.5 ml-1.5 text-sm text-sh-grey'>{usernamesWhoLiked.length}</div>
                 </div>
                 <span className='text-sm italic font-light post-date'>{relativeTime}</span>
             </div>
