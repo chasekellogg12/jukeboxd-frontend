@@ -38,9 +38,11 @@ export default function PostWall(props) {
             } 
             // Make every 5 posts in listOfPosts a sublist that can be accessed via a 2d array
             const postsInPages = [];
-            posts = posts.reverse();
-            for (let i = 0; i < posts.length; i += 5) {
-                postsInPages.push(posts.slice(i, i + 5));
+            if (posts) {
+                posts = posts.reverse();
+                for (let i = 0; i < posts.length; i += 5) {
+                    postsInPages.push(posts.slice(i, i + 5));
+                }
             }
             setListOfPosts(postsInPages);
         } catch(error) {
@@ -82,7 +84,12 @@ export default function PostWall(props) {
             }   
             <div className='flex-col space-y-3 post-wall-container'>
                 {/* {console.log(loggedInUserInfo) // THIS IS NORMAL WHEN LOGGEDINUSERINFO IS FROM HOME, BUT UNDEFINED WHEN FROM PROFILE} */}
-                {listOfPosts && listOfPosts[pageNumber].slice().map(post => ( // for every user in the list of users, put its name in its own div 
+                {listOfPosts.length == 0 && 
+                    <div className='flex flex-col justify-center p-1 m-1 border rounded-lg shadow hover:shadow-lg post-container border-[#4950D5] bg-c-grey text-sh-grey shadow-sh-grey'>
+                        <div className='flex justify-center w-full my-6 text-lg'>Nothing here yet!</div>
+                    </div>
+                }
+                {listOfPosts.length != 0 && listOfPosts[pageNumber].slice().map(post => ( // for every user in the list of users, put its name in its own div 
                     <Post key={post.postId} passedData={[post, Array.isArray(props.passedData) ? props.passedData[1] : props.passedData]} onLikeClick={handleLikeClick}/>
                 ))}
                 {!sectionName && <div className='flex justify-end w-full pr-2 space-x-3 page-iteration-container text-sh-grey'>
@@ -96,7 +103,7 @@ export default function PostWall(props) {
                     }
                 </div>}
 
-                {!listOfPosts && <div>No posts found.</div>}
+                
             </div>
         </div>
     )
