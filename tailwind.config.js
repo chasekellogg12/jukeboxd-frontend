@@ -44,7 +44,8 @@ module.exports = {
         'cast-grey': '#283038',
         // main background
         //'c-grey': '#14181cfa',
-        'c-grey': '#070c1b'
+        'c-grey': '#070c1b',
+        'dark-purple': '#4950D5',
       },
     },
   },
