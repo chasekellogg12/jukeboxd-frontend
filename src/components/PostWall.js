@@ -36,12 +36,12 @@ export default function PostWall(props) {
                 posts = maxPosts ? sortedPosts.slice(-1 * maxPosts) : sortedPosts;
                 //setListOfPosts(maxPosts ? sortedPosts.slice(-1*maxPosts) : sortedPosts); // the backend should be sorting them. The frontend should only be asking for a certain page.
             } 
-            // Make every 5 posts in listOfPosts a sublist that can be accessed via a 2d array
+            // Make every 4 posts in listOfPosts a sublist that can be accessed via a 2d array
             const postsInPages = [];
             if (posts) {
                 posts = posts.reverse();
-                for (let i = 0; i < posts.length; i += 5) {
-                    postsInPages.push(posts.slice(i, i + 5));
+                for (let i = 0; i < posts.length; i += 4) {
+                    postsInPages.push(posts.slice(i, i + 4));
                 }
             }
             setListOfPosts(postsInPages);
@@ -85,8 +85,8 @@ export default function PostWall(props) {
             <div className='flex-col space-y-3 post-wall-container'>
                 {/* {console.log(loggedInUserInfo) // THIS IS NORMAL WHEN LOGGEDINUSERINFO IS FROM HOME, BUT UNDEFINED WHEN FROM PROFILE} */}
                 {listOfPosts.length == 0 && 
-                    <div className='flex flex-col justify-center p-1 m-1 border rounded-lg shadow hover:shadow-lg post-container border-[#4950D5] bg-c-grey text-sh-grey shadow-sh-grey'>
-                        <div className='flex justify-center w-full my-6 text-lg'>Nothing here yet!</div>
+                    <div className='w-full flex flex-col justify-center p-1 m-1 border rounded-lg shadow hover:shadow-lg post-container border-[#4950D5] bg-c-grey text-sh-grey shadow-sh-grey'>
+                        <div className='flex justify-center my-6 text-lg'>Nothing here yet!</div>
                     </div>
                 }
                 {listOfPosts.length != 0 && listOfPosts[pageNumber].slice().map(post => ( // for every user in the list of users, put its name in its own div 

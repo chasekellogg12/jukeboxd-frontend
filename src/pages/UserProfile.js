@@ -20,8 +20,10 @@ const UserProfile = () => {
     const listOfUsers = [thisUsername];
     const [thisUserFollowers, setThisUserFollowers] = useState([]);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [listType, setListType] = useState(0);
 
-    const openPopup = () => {
+    const openPopup = (type) => {
+        setListType(type);
         setIsPopupOpen(true);
     }
 
@@ -134,11 +136,11 @@ const UserProfile = () => {
                 </div>
                 
                 <div className='flex mr-6 space-x-4 header-info-container text-h-grey'> 
-                    <button className='flex-col abrilfatface hover:text-white' onClick={() => openPopup()}>
+                    <button className='flex-col abrilfatface hover:text-white' onClick={() => openPopup(0)}>
                         <div>{thisUserInfo.followingBasicInfo.length}</div> 
                         <div>Following</div>
                     </button>
-                    <button className='flex-col abrilfatface hover:text-white' onClick={() => openPopup()}>
+                    <button className='flex-col abrilfatface hover:text-white' onClick={() => openPopup(1)}>
                         <div>{thisUserInfo.followersBasicInfo.length}</div> 
                         <div>Followers</div>
                     </button>
@@ -169,7 +171,7 @@ const UserProfile = () => {
                 {/* {displaySection === 4 && <ListFollowers passedData={thisUserInfo.followingBasicInfo}></ListFollowers>}
                 {displaySection === 5 && <ListFollowers passedData={thisUserInfo.followersBasicInfo}></ListFollowers>} */}
                 {/* {displaySection === 4 && <PostWall passedData={listOfUsers.length > 0 ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} />} */}
-                <ListFollowers passedData={thisUserInfo.followersBasicInfo} isOpen={isPopupOpen} onClose={closePopup}/>
+                {listType === 1 ? <ListFollowers passedData={thisUserInfo.followersBasicInfo} isOpen={isPopupOpen} onClose={closePopup}/> : <ListFollowers passedData={thisUserInfo.followingBasicInfo} isOpen={isPopupOpen} onClose={closePopup}/>}
             </div>
         </div>
     );

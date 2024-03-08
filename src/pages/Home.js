@@ -4,6 +4,7 @@ import PostWall from '../components/PostWall';
 import { useNavigate } from 'react-router-dom';
 import background from '../assets/font/backsplash.jpeg';
 import "../styles/home.css";
+import { set } from 'date-fns';
 
 const Home = ({ updateHeader }) => {
     // have buttons that direct us to the CreateUser page or the ListUser page
@@ -11,6 +12,8 @@ const Home = ({ updateHeader }) => {
     const [loggedInUserInfo, setLoggedInUserInfo] = useState(false);
     const [ isLoading, setIsLoading ] = useState(true)
     const [listOfUsers, setListOfUsers] = useState([]); // Initialize listOfUsers state
+    const [feedType, setFeedType] = useState(0);
+    const [showAll, setShowAll] = useState(true);
     //const [token, setToken] = useState(null)
 
     const navigate = useNavigate();
@@ -24,7 +27,7 @@ const Home = ({ updateHeader }) => {
                     setLoggedInUserInfo(user)
                     setGreeting(
                         <div className='flex-col items-center m-6 text-5xl text-white abrilfatface'>
-                            <h1>Welcome, {user.name}!</h1>
+                            <h1>Welcome back, {user.name}!</h1>
                         </div>
                     );
                 } catch(error) {
@@ -50,7 +53,20 @@ const Home = ({ updateHeader }) => {
         };
 
         checkLoginStatus();
-    }, []);
+    }, [listOfUsers]);
+
+    const changeFeed = (type) => {
+        setFeedType(type);
+        if (type === 1) {
+            setShowAll(false);
+            let followingUsernames = [];
+            loggedInUserInfo.followingBasicInfo.map(following => followingUsernames.push(following.username));
+            
+            setListOfUsers(followingUsernames); // listOfUsers needs to be a list of strings
+        } else {
+            setShowAll(true);
+        }
+    }
 
     if (isLoading) return <div>Loading...</div>
     
@@ -76,11 +92,18 @@ const Home = ({ updateHeader }) => {
                     </div>
             </div>
             {/* readd w-3/5 */}
-            <div className='flex-col items-center home-container'>
+            <div className='flex-col items-center w-full home-container'>
                 
                 {/* Pass listOfUsers to PostWall only if it's not empty */}
-                <div className='flex justify-center recent-posts'>
-                    <PostWall passedData={listOfUsers.length > 0 ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} />
+                <div className='flex flex-col justify-center recent-posts'>
+                    {localStorage.getItem('jwtToken') && 
+                        <div className='flex items-start justify-center w-full mb-4 space-x-10 abrilfatface'> 
+                            {feedType === 0 ? <button className='text-orange-700 underline underline-offset-2'>All Users</button> : <button onClick={() => changeFeed(0)} className='text-orange-400 hover:text-orange-700'>All Users</button>}
+                            {feedType === 0 ? <button onClick={() => changeFeed(1)} className='text-orange-400 hover:text-orange-700'>Following</button> : <button className='text-orange-700 underline underline-offset-2'>Following</button>}
+                        </div>
+                    }
+                    <div className='text-lg italic text-hov-blue abrilfatface'>Recent reviews on Jukeboxd...</div>
+                    <PostWall passedData={!showAll ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} />
                 </div>
             </div>
         </div>

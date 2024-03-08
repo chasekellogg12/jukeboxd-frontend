@@ -26,7 +26,7 @@ const PostService = { // UserService is an object that contains the asynchronous
     },
     getAllPosts: async() => {
         try {
-            const response = await axios.get('https://jukeboxd-4502c9ba8f0c.herokuapp.com/post/allPosts');
+            const response = await axios.get('https://jukeboxd-4502c9ba8f0c.herokuapp.com/post/allPosts'); // give it a page number
             return response.data;
         } catch(error) {
             console.error('Error getting all posts');
@@ -35,7 +35,7 @@ const PostService = { // UserService is an object that contains the asynchronous
     },
     getCertainPosts: async(listOfUsers) => {
         try {
-            const response = await axios.post('https://jukeboxd-4502c9ba8f0c.herokuapp.com/post/certainPosts', {listOfUsers}); // returns a list of posts
+            const response = await axios.post('https://jukeboxd-4502c9ba8f0c.herokuapp.com/post/certainPosts', {listOfUsers}); // give it a set of users and a page number returns a list of posts
             return response.data;
         } catch(error) {
             console.error('Error getting certain posts');
