@@ -5,7 +5,7 @@ const PostService = { // UserService is an object that contains the asynchronous
     // you give createUser a name, email. It attempts to get a response from backend when giving these in a post request via axios.
         // if it gets this response, return its data 
         // otherwise (it catches an error), throw error to console
-    createPost: async (jwtToken, postText, postSubject) => {
+    createPost: async (jwtToken, postText, postSubject, rating) => {
         try {
             const id = postSubject.id;
             const name = postSubject.name;
@@ -14,7 +14,7 @@ const PostService = { // UserService is an object that contains the asynchronous
             const year = postSubject.album.release_date.slice(0, 4);
             const albumCoverArt = postSubject.album.images[0].url;
             
-            await axios.post('https://jukeboxd-4502c9ba8f0c.herokuapp.com/post/addPost', {postText, id, name, artist, album, year, albumCoverArt}, {
+            await axios.post('https://jukeboxd-4502c9ba8f0c.herokuapp.com/post/addPost', {postText, id, name, artist, album, year, albumCoverArt, rating}, {
                 headers: {
                     'Authorization': `Bearer ${jwtToken}`
                 }

@@ -135,7 +135,7 @@ const UserProfile = () => {
                     </div>
                 </div>
                 
-                <div className='flex mr-6 space-x-4 header-info-container text-h-grey'> 
+                <div className='flex mr-6 space-x-4 header-info-container text-hov-blue'> 
                     <button className='flex-col abrilfatface hover:text-white' onClick={() => openPopup(0)}>
                         <div>{thisUserInfo.followingBasicInfo.length}</div> 
                         <div>Following</div>
@@ -156,7 +156,7 @@ const UserProfile = () => {
                 {displaySection === 1 && 
                     <div className='flex-col space-y-6 section'>
                         <div className='flex-col top-four-section'>
-                            <span className='text-lg text-white abrilfatface'>Favorite Tracks</span>
+                            <span className='text-lg italic text-hov-blue abrilfatface'>Favorite Tracks</span>
                             <TopFour passedData={thisUserInfo.topFour}/> 
                         </div>
                         <div className='recent-reviews'>

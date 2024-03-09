@@ -10,7 +10,8 @@ module.exports = {
     extend: {
       colors: {
         "h-blue": "#14181C",
-        "b-blue": "#1E252C",
+        "b-blue": "#070c1b",
+        //"#1E252C",
         "l-white": "#99AABB",
         "p-white": "#def",
   
@@ -27,7 +28,7 @@ module.exports = {
         //used on borders on homepage
         "b-grey": "#456",
         //subheadings in home
-        "sh-grey": "#C6AEF2",
+        "sh-grey": "#C6AEF2", // light purple
         //"#9ab",
         // poster border color
         "pb-grey": "#def",

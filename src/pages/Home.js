@@ -98,8 +98,8 @@ const Home = ({ updateHeader }) => {
                 <div className='flex flex-col justify-center recent-posts'>
                     {localStorage.getItem('jwtToken') && 
                         <div className='flex items-start justify-center w-full mb-4 space-x-10 abrilfatface'> 
-                            {feedType === 0 ? <button className='text-orange-700 underline underline-offset-2'>All Users</button> : <button onClick={() => changeFeed(0)} className='text-orange-400 hover:text-orange-700'>All Users</button>}
-                            {feedType === 0 ? <button onClick={() => changeFeed(1)} className='text-orange-400 hover:text-orange-700'>Following</button> : <button className='text-orange-700 underline underline-offset-2'>Following</button>}
+                            {feedType === 0 ? <button className='inline-block text-orange-700 drop-shadow(0 10px 8px rgb(251 146 60 / .50))'>All Users</button> : <button onClick={() => changeFeed(0)} className='text-orange-400 hover:text-orange-700'>All Users</button>}
+                            {feedType === 0 ? <button onClick={() => changeFeed(1)} className='text-orange-400 hover:text-orange-700'>Following</button> : <button className='text-orange-700'>Following</button>}
                         </div>
                     }
                     <div className='text-lg italic text-hov-blue abrilfatface'>Recent reviews on Jukeboxd...</div>

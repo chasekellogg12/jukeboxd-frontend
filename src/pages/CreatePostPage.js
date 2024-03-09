@@ -5,12 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import TrackSearch from '../components/TrackSearch';
 import Header from '../components/Header';
 import logo from '../assets/font/logo512.png';
+import StarRating from '../components/StarRating';
 
 export default function CreatePostPage() { 
     const [postText, setPostText] = useState('');
     const navigate = useNavigate();
     const [postSubject, setPostSubject] = useState(false);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [rating, setRating] = useState(0);
 
     const openPopup = () => {
         setIsPopupOpen(true);
@@ -30,7 +32,7 @@ export default function CreatePostPage() {
         
         // attempt to create a user (see UserService.js) then log its data
         try {
-            await PostService.createPost(localStorage.getItem('jwtToken'), postText, postSubject); // returns nothing. We're just making the post and adding it to the JPA repository.
+            await PostService.createPost(localStorage.getItem('jwtToken'), postText, postSubject, rating); // returns nothing. We're just making the post and adding it to the JPA repository.
 
             navigate('/');
 
@@ -66,9 +68,10 @@ export default function CreatePostPage() {
                                     </div>
                                     <div className='text-sm italic'>{postSubject.artists ? postSubject.artists[0].name : ''}</div>
                                 </div>
+                                <svg className='cursor-pointer' onClick={() => openPopup()} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4950D5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
                             </div>
-                            <button className='px-2 py-1 text-sm text-white bg-orange-400 rounded-lg change-track-button hover:bg-orange-500' onClick={() => openPopup()}>Change Track</button>
                         </div>
+                        <StarRating size={'text-3xl'} settingRating={setRating}/>
                         <form onSubmit={handleSubmit} className='flex items-center justify-center w-full space-x-2'> 
                             <textarea placeholder='Share your thoughts with the world...'className='w-2/3 p-2 rounded-md resize-none text-c-grey' value={postText} onChange={(e) => setPostText(e.target.value)} />
                             <button type='submit' className='px-2 py-1 text-white rounded-lg bg-b-green hover:bg-green-600'> 

@@ -22,6 +22,7 @@ export default function PostWall(props) {
         //e.preventDefault();
         try {
             let posts = [];
+            setPageNumber(0);
             if (!Array.isArray(props.passedData)) { // if the listOfUsers we're getting is empty, display all the posts (this means that we're on the homepage)
                 posts = await PostService.getAllPosts(); // should instead be getPostsFromPage -> if the parameter is 1, it gives you the first 10 posts. If it's 2, it gives posts 11 - 20 etc
                 const sortedPosts = sectionName === 'Popular Reviews' ? posts.sort((a, b) => a.usernamesWhoLiked.length - b.usernamesWhoLiked.length) : posts;
@@ -78,18 +79,18 @@ export default function PostWall(props) {
         <div className='flex-col reviews'>
             {sectionName && 
                 <div className='flex justify-between w-full section-title-container'>
-                    <span className='text-lg text-white abrilfatface'>{sectionName}</span>
+                    <span className='text-lg italic text-hov-blue abrilfatface'>{sectionName}</span>
                     {totalPosts > 2 && <button className='text-sm text-sh-grey'onClick={() => props.onSeeMore(3)}>See More</button>}
                 </div>
             }   
             <div className='flex-col space-y-3 post-wall-container'>
                 {/* {console.log(loggedInUserInfo) // THIS IS NORMAL WHEN LOGGEDINUSERINFO IS FROM HOME, BUT UNDEFINED WHEN FROM PROFILE} */}
-                {listOfPosts.length == 0 && 
+                {listOfPosts.length === 0 && 
                     <div className='w-full flex flex-col justify-center p-1 m-1 border rounded-lg shadow hover:shadow-lg post-container border-[#4950D5] bg-c-grey text-sh-grey shadow-sh-grey'>
                         <div className='flex justify-center my-6 text-lg'>Nothing here yet!</div>
                     </div>
                 }
-                {listOfPosts.length != 0 && listOfPosts[pageNumber].slice().map(post => ( // for every user in the list of users, put its name in its own div 
+                {listOfPosts.length !== 0 && listOfPosts[pageNumber].slice().map(post => ( // for every user in the list of users, put its name in its own div 
                     <Post key={post.postId} passedData={[post, Array.isArray(props.passedData) ? props.passedData[1] : props.passedData]} onLikeClick={handleLikeClick}/>
                 ))}
                 {!sectionName && <div className='flex justify-end w-full pr-2 space-x-3 page-iteration-container text-sh-grey'>

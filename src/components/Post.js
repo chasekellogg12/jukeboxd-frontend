@@ -7,10 +7,11 @@ import logo from '../assets/font/logo512.png';
 import thumbsUp from '../assets/font/thumbsUp.png';
 import thumbsUpFilled from '../assets/font/thumbsUpFilled.png';
 import { toast } from 'react-toastify';
+import StarRating from './StarRating.js';
 
 
 export default function Post(props) {
-    const { postId, author, datePosted, text, usernamesWhoLiked, stringUsernamesWhoLiked, postSubjectBasicInfo } = props.passedData[0];
+    const { postId, author, datePosted, text, usernamesWhoLiked, stringUsernamesWhoLiked, postSubjectBasicInfo, rating } = props.passedData[0];
     const [ linkUsername, setLinkUsername ] = useState(null);
     const [ linkName, setLinkName ] = useState(null); 
     const loggedInUserInfo = props.passedData[1];
@@ -103,7 +104,8 @@ export default function Post(props) {
                                     alt='Profile pic'
                                 />
                             </div>
-                        <span className='text-white post-author-name' style={{ cursor: 'pointer' }} onClick={() => navigate(`/profile/${author.username}`)}>{author.name}</span>
+                        <span className='mr-4 text-white post-author-name' style={{ cursor: 'pointer' }} onClick={() => navigate(`/profile/${author.username}`)}>{author.name}</span>
+                        <StarRating fixedRating={rating} size={'text-lg'}/>
                     </div>
                     <div className='flex post-text'>
                         <p>{text}</p>
