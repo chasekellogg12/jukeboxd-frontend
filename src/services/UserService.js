@@ -98,6 +98,20 @@ const UserService = { // UserService is an object that contains the asynchronous
             console.error('Error following user', error);
             throw error;
         }
+    },
+    unfollowUser: async (jwtToken, followerUsername, followingUsername) => {
+        try {
+            await axios.post(`https://jukeboxd-4502c9ba8f0c.herokuapp.com/api/deleteFollow/${followerUsername}/${followingUsername}`, {}, {
+                headers: {
+                    'Authorization': `Bearer ${jwtToken}`
+                }
+            })
+            console.log('User successfully unfollowed');
+            return
+        } catch (error) {
+            console.error('Error unfollowing user', error);
+            throw error;
+        }
     }
 };
 export default UserService;

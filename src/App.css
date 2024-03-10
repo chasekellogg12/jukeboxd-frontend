@@ -50,6 +50,21 @@
   z-index: 9999;
 }
 
+.App-footer {
+  background-color: #61dafb;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(5px + 2vmin);
+  color: white;
+  justify-content: space-evenly;
+  list-style-type: none;
+  margin-bottom: 30px;
+  z-index: 9999;
+}
+
 .App-link {
   color: #61dafb;
 }

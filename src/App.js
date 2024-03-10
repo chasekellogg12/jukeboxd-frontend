@@ -10,6 +10,7 @@ import { React, useState } from 'react';
 import './App.css';
 import SettingsPage from './pages/SettingsPage';
 import { ToastContainer } from 'react-toastify';
+import SiteFooter from './components/SiteFooter';
 
 
 // we need a global variable that has the JWT token. If the user is not authenticated, this will have ' ' 
@@ -41,6 +42,7 @@ const App = () => {
                 <Route path='*' element={<Navigate to='/' />} />
               </Routes>
           </div>
+          <SiteFooter/>
         </div>
       </div>
     </BrowserRouter>

@@ -1,6 +1,6 @@
 // do the GET request for all post information in this component. Pass what you get to the post component.
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import PostService from '../services/PostService';
 import Post from './Post';
 //import './PostWall.css';
@@ -17,6 +17,7 @@ export default function PostWall(props) {
     const sectionName = props.sectionName ? props.sectionName : false;
     const [totalPosts, setTotalPosts] = useState(0);
     const [pageNumber, setPageNumber] = useState(0);
+    const bottomRef = useRef(null);
 
     const showPosts = useCallback(async () => { // showPosts is only recreated when listOfUsers changes
         //e.preventDefault();
@@ -60,6 +61,7 @@ export default function PostWall(props) {
     // Function to handle page changes
     const changePage = (increment) => {
         setPageNumber(prevPageNumber => prevPageNumber + increment);
+        bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
     
     if (isLoading) return <div>Loading...</div>
@@ -68,9 +70,30 @@ export default function PostWall(props) {
         try {
             await PostService.createLike(localStorage.getItem('jwtToken'), postId);
             showPosts();
-            console.log('like created');
+            props.onRefreshProfile();
         } catch (error) {
             console.error('Error creating like');
+        }
+    }
+
+    const handleDeleteLikeClick = async (username, postId) => {
+        try {
+            await PostService.deleteLike(localStorage.getItem('jwtToken'), username, postId);
+            props.onRefreshProfile();
+            showPosts();
+        } catch (error) {
+            console.error('Error removing like');
+        }
+    }
+
+    const handleDeletePost = async(postId) => {
+        try {
+            await PostService.deletePost(localStorage.getItem('jwtToken'), postId);
+            showPosts();
+            console.log('post deleted');
+            props.onRefreshProfile();
+        } catch (error) {
+            console.error('Error deleting post');
         }
     }
     
@@ -91,9 +114,9 @@ export default function PostWall(props) {
                     </div>
                 }
                 {listOfPosts.length !== 0 && listOfPosts[pageNumber].slice().map(post => ( // for every user in the list of users, put its name in its own div 
-                    <Post key={post.postId} passedData={[post, Array.isArray(props.passedData) ? props.passedData[1] : props.passedData]} onLikeClick={handleLikeClick}/>
+                    <Post key={post.postId} passedData={[post, Array.isArray(props.passedData) ? props.passedData[1] : props.passedData]} onLikeClick={handleLikeClick} onDeleteLikeClick={handleDeleteLikeClick} onDeleteClick={handleDeletePost}/>
                 ))}
-                {!sectionName && <div className='flex justify-end w-full pr-2 space-x-3 page-iteration-container text-sh-grey'>
+                {!sectionName && <div ref={bottomRef} className='flex justify-end w-full pr-2 space-x-3 page-iteration-container text-sh-grey'>
                     {pageNumber > 0 ? 
                         <button onClick={() => changePage(-1)} className='italic hover:text-dark-purple'>Previous</button> :
                         <button className='italic text-dark-purple'>Previous</button>
@@ -102,9 +125,8 @@ export default function PostWall(props) {
                         <button onClick={() => changePage(1)} className='italic hover:text-dark-purple'>Next</button> :
                         <button className='italic text-dark-purple'>Next</button>
                     }
-                </div>}
-
-                
+                </div>
+                }
             </div>
         </div>
     )

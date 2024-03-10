@@ -90,6 +90,20 @@ const UserProfile = () => {
             console.error('Error handling following', error);
         }
     }
+
+
+    const handleUnfollow = async () => {
+        try {
+            await UserService.unfollowUser(localStorage.getItem('jwtToken'), loggedInUserInfo.username, thisUserInfo.username);
+            // then we should refresh the page. Don't return anything.
+            //setThisUserInfo(newUserInfo);
+            findProfileUserInfo();
+            //navigate(0);
+
+        } catch(error) {
+            console.error('Error handling following', error);
+        }
+    }
     
     // profile container has 3 things in a column and centered:
         // header container has 2 things left to right
@@ -127,10 +141,13 @@ const UserProfile = () => {
                     <div>
 
                         {loggedInUserInfo && !thisUserFollowers.includes(loggedInUserInfo.username) && loggedInUserInfo.username !== thisUserInfo.username && 
-                            <button className='follow-button bg-b-green rounded-lg px-2 py-1 pt-1.5 hover:bg-green-600' onClick={() => handleFollow()}>Follow</button>
+                            <button className='follow-button bg-hov-blue rounded-lg px-2 py-1 pt-1.5 hover:bg-blue-600' onClick={() => handleFollow()}>Follow</button>
+                        }
+                        {loggedInUserInfo && thisUserFollowers.includes(loggedInUserInfo.username) && loggedInUserInfo.username !== thisUserInfo.username && 
+                            <button className='follow-button bg-blue-600 rounded-lg px-2 py-1 pt-1.5 hover:bg-hov-blue' onClick={() => handleUnfollow()}>Unfollow</button>
                         }
                         {loggedInUserInfo.username === thisUserInfo.username &&
-                            <button className='edit-profile-button bg-b-green rounded-lg px-2 py-1 pt-1.5 hover:bg-green-600' onClick={() => navigate('/settings')}>Edit Profile</button>
+                            <button className='edit-profile-button bg-orange-400 rounded-lg px-2 py-1 pt-1.5 hover:bg-orange-600' onClick={() => navigate('/settings')}>Edit Profile</button>
                         }
                     </div>
                 </div>
@@ -160,11 +177,11 @@ const UserProfile = () => {
                             <TopFour passedData={thisUserInfo.topFour}/> 
                         </div>
                         <div className='recent-reviews'>
-                            <PostWall passedData={listOfUsers.length > 0 ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} maxPosts={2} sectionName={'Recent Reviews'} onSeeMore={setDisplaySection}/>
+                            <PostWall passedData={listOfUsers.length > 0 ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} maxPosts={2} sectionName={'Recent Reviews'} onSeeMore={setDisplaySection} onRefreshProfile={findProfileUserInfo}/>
                         </div>
                         
                         
-                        <PostWall passedData={listOfUsers.length > 0 ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} maxPosts={2} sectionName={'Popular Reviews'} onSeeMore={setDisplaySection}/>
+                        <PostWall passedData={listOfUsers.length > 0 ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} maxPosts={2} sectionName={'Popular Reviews'} onSeeMore={setDisplaySection} onRefreshProfile={findProfileUserInfo}/>
                     </div>}
                 {displaySection === 2 && <ListActivity passedData={thisUserInfo.recentActivity}/>}  
                 {displaySection === 3 && <PostWall passedData={listOfUsers.length > 0 ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} />}

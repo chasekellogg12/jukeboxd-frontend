@@ -54,6 +54,33 @@ const PostService = { // UserService is an object that contains the asynchronous
             console.error('Error liking post');
             throw error;
         }
+    },
+    deleteLike: async(jwtToken, username, postId) => {
+        try {
+            await axios.post(`https://jukeboxd-4502c9ba8f0c.herokuapp.com/like/deleteLike/${username}/${postId}`, {}, {
+                headers: {
+                    'Authorization': `Bearer ${jwtToken}`
+                }
+            });
+            console.log('like removed in backend')
+        } catch(error) {
+            console.error('Error removing like from post');
+            throw error;
+        }
+    },
+    deletePost: async(jwtToken, postId) => {
+        try {
+            await axios.post(`https://jukeboxd-4502c9ba8f0c.herokuapp.com/post/deletePost/${postId}`, {postId}, {
+                headers: {
+                    'Authorization': `Bearer ${jwtToken}`
+                }
+            });
+            console.log('post removed from backend')
+        } catch(error) {
+            console.error('Error deleting post');
+            throw error;
+        }
     }
+
 };
 export default PostService;

@@ -54,33 +54,25 @@ export default function Post(props) {
         }
     }
 
+    const handleDeleteLikeClick = async () => {
+        try {
+            setHasLiked(false);
+            props.onDeleteLikeClick(loggedInUserInfo.username, postId);
+        } catch(error) {
+            console.log('Error deleting like in post component')
+        }
+    }
+
+    const handleDeleteClick = async () => {
+        try {
+            props.onDeleteClick(postId);
+        } catch(error) {
+            console.log('Error deleting post in component');
+        }
+    }
+
     if (isLoading) return <div>Loading...</div>
-    // infintaly console logging 'undefined'
-    // post-container should have three things in a column:
-        // header-container will have 2 things left to right
-            // cover-art-container
-            // header-info-container will have 3 things in a column:
-                // post-date
-                // author-info-container will have 2 things left to right:
-                    // circular-avatar
-                    // user's name
-                // Song-name-container will have 2 things left to right:
-                    // song-name
-                    // song-release-date
-        // text-container
-        // Like-container
 
-    // post-container has 2 things in a column:
-        // content-container (8/9 of the div's height) has 2 things left to right:
-            // cover art (1/6 of the div's width)
-            // info container (5/6 of the div's width) has 3 things in a column:
-                // Song name ()
-                // Name
-                // text
-
-        // likes container (1/9th of the div's height) has 2 things left to right with justify-space:
-            // likes
-            // date
     return (
         <div className='flex flex-col justify-between p-1 m-1 border rounded-lg shadow hover:shadow-lg post-container border-[#4950D5] bg-c-grey text-sh-grey shadow-sh-grey'>
             <div className='flex content-container'>
@@ -119,15 +111,17 @@ export default function Post(props) {
                         <button className='w-5 h-5 like-button' onClick={handleLikeClick}>
                             <svg className='hover:stroke-hov-blue' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6AEF2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
                         </button> :
-                        <button className='w-5 h-5 like-button'>
+                        <button className='w-5 h-5 like-button' onClick={handleDeleteLikeClick}>
                             {/* <img src={thumbsUpFilled} alt='Filled icon'></img> */}
                             <svg className='stroke-hov-blue' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
                         </button>
                     } 
-                    <div className='mt-1.5 ml-1.5 text-sm text-sh-grey'>{usernamesWhoLiked.length}</div>
+                    <div className='mt-1.5 ml-1.5 text-sm text-sh-grey mr-4'>{usernamesWhoLiked.length}</div>
+                    {loggedInUserInfo && author.username === loggedInUserInfo.username && <svg className='cursor-pointer hover:stroke-orange-400' onClick={handleDeleteClick} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6AEF2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>}
                 </div>
                 <span className='text-sm italic font-light post-date'>{relativeTime}</span>
             </div>
         </div>
+        // have a button that only the author can see. When pressed, make post request to bakcend with JWT token and postId signaling to remove the post.
     );
 }

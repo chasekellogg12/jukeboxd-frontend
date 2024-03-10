@@ -84,28 +84,5 @@ export default function CreatePostPage() {
                 
             </div>
         </div>
-
-        // <>
-        //     {!postSubject && <div>
-        //         <h3>What track do you want to review?</h3>
-        //         <button className='bg-gray-700' onClick={() => openPopup()}>Add Track</button>
-        //     </div>}
-            
-        //     {postSubject && <div>
-        //         <h1>Create Post</h1>
-        //         <h3>Review of {postSubject.name}</h3>
-        //         <button className='add-track-button' onClick={() => openPopup()}>Change Track</button>
-        //         <form onSubmit={handleSubmit}> 
-        //             <label>
-        //                 <textarea value={postText} onChange={(e) => setPostText(e.target.value)} />
-        //             </label>
-        //             <br />
-        //             <button type='submit'> 
-        //                 Submit 
-        //             </button>
-        //         </form>
-        //     </div>}
-        //     <TrackSearch isOpen={isPopupOpen} onClose={closePopup} passUp={handlePostSubject}/>
-        // </>   
     );
 }
