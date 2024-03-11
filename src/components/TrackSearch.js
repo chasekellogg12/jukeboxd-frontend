@@ -76,12 +76,12 @@ export default function TrackSearch(props) {
         // ensure that this div (which is a popup container) is scrollable. If its size gets past a certain point, you should be able to scroll thru it
         <>
             {props.isOpen && (
-            <div onClick={props.onClose} className='fixed top-0 left-0 z-10 flex items-center justify-center w-full h-full bg-gray-700 bg-opacity-50'>
-                <div onClick={(e) => e.stopPropagation()} className='z-10 flex flex-col items-center w-1/3 p-6 space-y-3 border rounded-lg shadow-lg bg-c-grey'>
+            <div onClick={props.onClose} className='fixed top-0 left-0 z-40 flex items-center justify-center w-full h-full bg-gray-700 bg-opacity-50 text-h-grey'>
+                <div onClick={(e) => e.stopPropagation()} className='z-50 flex flex-col items-center w-1/3 p-6 space-y-3 border rounded-lg shadow-lg  min-w-96 bg-c-grey'>
                     <h1 className='text-lg text-white abrilfatface'>Find a Track</h1>
                     <form onSubmit={handleSearch}> 
                         <label className='space-x-2'>
-                            <input className='rounded-md' type='text' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                            <input className='p-1 rounded-md text-c-grey' type='text' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                             <button type='submit'> Search </button>
                         </label>
                         
@@ -91,8 +91,8 @@ export default function TrackSearch(props) {
                         <div className='overflow-auto max-h-96'>
                             {searchResults.map(track => ( // for every track, get it's album cover art image 
                                 <div key={track.id} className='mb-2.5'>
-                                    <button className='flex items-center space-x-3 text-sm rounded-md hover:bg-black' onClick={() => handleSelect(track)}>
-                                        {track.album ? <img className='w-1/12 rounded-md'src={track.album.images[0].url} alt='coverart'></img> : <img src={logo} alt='coverart'></img>}
+                                    <button className='flex items-center space-x-3 text-sm rounded-md hover:bg-dark-purple' onClick={() => handleSelect(track)}>
+                                        {track.album ? <img className='w-1/12 ml-0.5 rounded-md'src={track.album.images[0].url} alt='coverart'></img> : <img src={logo} alt='coverart'></img>}
                                         <div className='flex flex-col items-start justify-start'>
                                             <div className='flex items-center space-x-1 title'>
                                                 <div className='text-white'>{track.name}</div>

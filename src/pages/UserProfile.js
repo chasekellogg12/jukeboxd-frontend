@@ -7,6 +7,8 @@ import ListFollowers from "../components/ListFollowers";
 import TopFour from "../components/TopFour";
 import ListActivity from "../components/ListActivity";
 import logo from "../assets/font/logo512.png";
+import TrackService from "../services/TrackService";
+import TrackSearch from "../components/TrackSearch";
 
 const UserProfile = () => {
     
@@ -21,6 +23,8 @@ const UserProfile = () => {
     const [thisUserFollowers, setThisUserFollowers] = useState([]);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [listType, setListType] = useState(0);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [songToBeChanged, setSongToBeChanged] = useState(0);
 
     const openPopup = (type) => {
         setListType(type);
@@ -31,6 +35,14 @@ const UserProfile = () => {
         setIsPopupOpen(false);
     }
 
+    const openSearchPopup = (index) => {
+        setSongToBeChanged(index);
+        setIsSearchOpen(true);
+    }
+
+    const closeSearchPopup = () => {
+        setIsSearchOpen(false);
+    }
 
     const navigate = useNavigate();
 
@@ -105,25 +117,21 @@ const UserProfile = () => {
         }
     }
     
-    // profile container has 3 things in a column and centered:
-        // header container has 2 things left to right
-            // an avatar
-            // a header-info-container has 2 things left to right space-between:
-                // author-name-container has 2 things in a column:
-                    // Name
-                    // Username
-                // follower-following-posts-container has 3 things left to right:
-                    // number of posts
-                    // followers
-                    // following
-        
-        // buttons container has 4 things left to right (just like the navbar):
-            // profile, recent activity, reviews, likes
-        
-        // sections contianer has things in a column depending on what displaySection is
+    const addTrackToBackend = async (track) => { // add the track to OUR backend if it's not already there. Then, set change the topFourSongs array and update the backend with it.
+        try {
+            await TrackService.addTrackToTop4(localStorage.getItem('jwtToken'), songToBeChanged, track);
+            findProfileUserInfo();
+            //showPosts();
+            console.log('Track added to OUR backend');
+        } catch (error) {
+            console.error('Error adding track to our backend');
+        }
+    };
+
     return (
         <div className='flex flex-col items-center justify-center space-y-6 profile-container'>
             <div className='flex items-center justify-between w-full p-4 text-white rounded-lg header-container bg-b-blue'>
+                <TrackSearch isOpen={isSearchOpen} onClose={closeSearchPopup} passUp={addTrackToBackend}/>
                 <div className='flex items-center space-x-4 avatar-name-container'>
                     <div className='avatar'>
                         <div
@@ -174,7 +182,7 @@ const UserProfile = () => {
                     <div className='flex-col space-y-6 section'>
                         <div className='flex-col top-four-section'>
                             <span className='text-lg italic text-hov-blue abrilfatface'>Favorite Tracks</span>
-                            <TopFour passedData={thisUserInfo.topFour}/> 
+                            <TopFour passedData={thisUserInfo.topFour} loggedInUser={loggedInUserInfo} thisUser={thisUserInfo} openSearch={openSearchPopup}/> 
                         </div>
                         <div className='recent-reviews'>
                             <PostWall passedData={listOfUsers.length > 0 ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} maxPosts={2} sectionName={'Recent Reviews'} onSeeMore={setDisplaySection} onRefreshProfile={findProfileUserInfo}/>
