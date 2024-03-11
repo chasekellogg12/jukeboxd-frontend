@@ -24,28 +24,31 @@ const App = () => {
   };
 
   return ( // if a user can't see a page when they are logged in or logged out, redirect home accordingly
-    <BrowserRouter>
-      <ToastContainer />
-      <div className='app-container bg-c-grey poppins'>
-        <div className='app-content'>
-          <Header key={headerKey} updateHeader={updateHeader}/>
-          <div className=''>
-          
-              <Routes>
-                <Route path='/' element={<Home updateHeader={updateHeader}/>}></Route>
-                <Route path='/create-user' element={localStorage.getItem('jwtToken') ? <Navigate to='/'/> : <CreateUser updateHeader={updateHeader}/>}></Route>
-                <Route path='/login' element={localStorage.getItem('jwtToken') ? <Navigate to='/'/> : <Login updateHeader={updateHeader}/>}></Route>
-                <Route path='/create-post' element={localStorage.getItem('jwtToken') ? <CreatePostPage/> : <Navigate to='/'/>}></Route>
-                {/* <Route path='/list-users' element={<ListUsers />}></Route> */}
-                <Route path="/profile/:thisUsername" element={<UserProfile/>} />
-                <Route path='/settings' element={localStorage.getItem('jwtToken') ? <SettingsPage/> : <Navigate to='/'/>}></Route>
-                <Route path='*' element={<Navigate to='/' />} />
-              </Routes>
+    <div className='bg-c-grey'>
+      <BrowserRouter>
+        <ToastContainer />
+        <div className='app-container bg-c-grey poppins'>
+          <div className='app-content'>
+            <Header key={headerKey} updateHeader={updateHeader}/>
+            <div className=''>
+            
+                <Routes>
+                  <Route path='/' element={<Home updateHeader={updateHeader}/>}></Route>
+                  <Route path='/create-user' element={localStorage.getItem('jwtToken') ? <Navigate to='/'/> : <CreateUser updateHeader={updateHeader}/>}></Route>
+                  <Route path='/login' element={localStorage.getItem('jwtToken') ? <Navigate to='/'/> : <Login updateHeader={updateHeader}/>}></Route>
+                  <Route path='/create-post' element={localStorage.getItem('jwtToken') ? <CreatePostPage/> : <Navigate to='/'/>}></Route>
+                  {/* <Route path='/list-users' element={<ListUsers />}></Route> */}
+                  <Route path="/profile/:thisUsername" element={<UserProfile/>} />
+                  <Route path='/settings' element={localStorage.getItem('jwtToken') ? <SettingsPage/> : <Navigate to='/'/>}></Route>
+                  <Route path='*' element={<Navigate to='/' />} />
+                </Routes>
+            </div>
+            
           </div>
-          <SiteFooter/>
         </div>
-      </div>
-    </BrowserRouter>
+        <SiteFooter/>
+      </BrowserRouter>
+    </div>
   );
 }
 export default App;

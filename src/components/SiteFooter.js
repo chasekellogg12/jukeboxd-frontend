@@ -17,11 +17,17 @@ export default function SiteFooter() { // we need to re-render the header when c
 
     
     return (
-        <div className=' z-40 sticky flex items-center justify-center text-[#C6AEF2] bg-c-grey min-h-16 abrilfatface w-full'>
-            yo
-            <div className='flex items-center justify-between w-full'>
-                yo
+        <div className='sticky z-40 flex flex-col items-center w-full mt-10 space-y-3 text-xs text-dark-purple bg-c-grey min-h-16 poppins'>
+            <div className='flex items-center justify-evenly app-content'>
+                <span>Contact</span>
+                <span>Portfolio</span>
+                <span>Resume</span>
+                <span>LinkedIn</span>
             </div>
+            <div className='flex justify-start'>
+                <span>©️ Jukeboxd. Made by Chase Kellogg.</span>
+            </div>
+
         </div>
     )
 }
