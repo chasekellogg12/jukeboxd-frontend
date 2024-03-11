@@ -17,10 +17,6 @@ const TopFour = (props) => {
     const { passedData, loggedInUser, thisUser, openSearch, closeSearch } = props;
     const sadMascots = [sadMascot2, sadMascot3, sadMascot4, sadMascot5]
 
-    const handleOpen = async () => {
-
-    }
-
     return (
         <div className='flex mt-1 top-four-wall-container justify-evenly'>
             {passedData.map((song, index) => ( // for every track, get it's album cover art image 
