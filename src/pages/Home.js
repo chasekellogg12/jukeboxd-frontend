@@ -35,14 +35,18 @@ const Home = ({ updateHeader }) => {
                 }
             } else {
                 setGreeting(
-                <div className='flex-col items-center m-6 text-5xl text-white poppins'>
-                    <h1 className='h-grey'>Welcome to Jukeboxd.</h1>
-                    <div className='flex justify-center space-x-2'>
-                        <button className='text-orange-400 hover:text-dark-purple'onClick={() => navigate("/create-user")}>
+                <div className='flex-col items-center m-4 text-5xl font-bold tracking-wider text-white inter poppins'>
+                    <div className='space-x-2.5'>
+                        <span className='h-grey'>Welcome to</span>
+                        <span className=' bg-clip-text bg-gradient-to-r from-hov-blue via-dark-purple to-hov-blue'>Jukeboxd</span>
+                    </div>
+                    
+                    <div className='flex justify-center p-1 space-x-2 font-semibold'>
+                        <button className='text-transparent hover:text-dark-purple bg-clip-text bg-gradient-to-r from-dark-purple to-orange-400'onClick={() => navigate("/create-user")}>
                             Sign Up
                         </button>
                         <span> or </span>
-                        <button className='text-orange-400 hover:text-dark-purple' onClick={() => navigate("/login")}>
+                        <button className='text-transparent hover:text-dark-purple bg-clip-text bg-gradient-to-r from-orange-400 to-dark-purple' onClick={() => navigate("/login")}>
                             Login
                         </button>
                     </div>
@@ -84,10 +88,10 @@ const Home = ({ updateHeader }) => {
                 items-center 
                 relative 
                 mt-[5%]
-                md:mt-[-15%] 
+                md:mt-[-25%] 
                 gap-2 
                 z-40">
-                    <div className='flex justify-center welcome-message '>
+                    <div className='flex justify-center mb-3 welcome-message'>
                         {greeting}
                     </div>
             </div>
