@@ -35,7 +35,7 @@ const StarRating = ({ totalStars = 5, fixedRating, size, settingRating }) => {
     return (
       <span
         key={index}
-        className={`${size} ${cursorStyle} ${isFullStar ? 'text-orange-400' : 'text-gray-400'}`}
+        className={`${size} ${cursorStyle} ${isFullStar ? 'text-orange-400' : 'text-dark-purple'}`}
         onMouseOver={() => handleMouseOver(index + 1)}
         onClick={() => handleClick(index + 1)}
       >

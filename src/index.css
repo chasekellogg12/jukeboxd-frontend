@@ -7,10 +7,20 @@
   src: url("./assets/font/graphic-web-regular.ttf");
   font-family: "Tiempos-Regular";
   src: url("./assets/font/TiemposHeadline-Regular.otf");
+}
+
+@font-face {
   font-family: "Poppins";
   src: url("./assets/font/Poppins-Regular.ttf");
+}
+@font-face {
   font-family: "AbrilFatface";
-  src: url("./assets/font/AbrilFatface-Regular.ttf")
+  src: url("./assets/font/AbrilFatface-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/font/Inter-VariableFont_slnt\,wght.ttf");
 }
 
 @layer base {
@@ -34,13 +44,15 @@
   .abrilfatface {
     font-family: "AbrilFatface";
   }
+  .inter {
+    font-family: "Inter";
+  }
 }
 
 
 body {
   margin: 0;
-  font-family: "Graphik", system-ui, sans-serif, "Poppins", "AbrilFatface";
-  font-family: "Tiempos-Regular", system-ui, sans-serif, "Poppins", "AbrilFatface";
+  font-family: "AbrilFatFace", "Graphik", "Tiempos-Regular", system-ui, sans-serif, "Poppins", "Inter";
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 }

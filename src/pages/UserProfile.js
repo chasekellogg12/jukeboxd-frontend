@@ -10,6 +10,7 @@ import logo from "../assets/font/logo512.png";
 import TrackService from "../services/TrackService";
 import TrackSearch from "../components/TrackSearch";
 import NewName from "../components/NewName";
+import NewAvatar from "../components/NewAvatar";
 
 const UserProfile = () => {
     
@@ -27,6 +28,7 @@ const UserProfile = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [songToBeChanged, setSongToBeChanged] = useState(0);
     const [isChangeNameOpen, setIsChangeNameOpen] = useState(false);
+    const [isChangeAvatarOpen, setIsChangeAvatarOpen] = useState(false);
 
     const openPopup = (type) => {
         setListType(type);
@@ -52,6 +54,14 @@ const UserProfile = () => {
 
     const closeChangeNamePopup = () => {
         setIsChangeNameOpen(false);
+    }
+
+    const openChangeAvatarPopup = () => {
+        setIsChangeAvatarOpen(true);
+    }
+
+    const closeChangeAvatarPopup = () => {
+        setIsChangeAvatarOpen(false);
     }
 
     const navigate = useNavigate();
@@ -140,11 +150,12 @@ const UserProfile = () => {
 
     return (
         <div className='flex flex-col items-center justify-center space-y-6 profile-container'>
-            <div className='flex items-center justify-between w-full p-4 text-white rounded-lg header-container bg-b-blue'>
+            <div className='flex items-center justify-between w-full p-4 text-white rounded-lg header-container bg-b-blue group'>
                 <TrackSearch isOpen={isSearchOpen} onClose={closeSearchPopup} passUp={addTrackToBackend}/>
                 <NewName isOpen={isChangeNameOpen} onClose={closeChangeNamePopup} currUser={loggedInUserInfo} resetProfile={findProfileUserInfo}/>
-                <div className='flex items-center space-x-4 avatar-name-container group'>
-                    <div className='avatar'>
+                <NewAvatar isOpen={isChangeAvatarOpen} onClose={closeChangeAvatarPopup} currUser={loggedInUserInfo} resetProfile={findProfileUserInfo}/>
+                <div className='flex items-center space-x-4 avatar-name-container'>
+                    <div className='relative avatar'>
                         <div
                         id='avatar'
                         className='w-1/6 drop-shadow-xl'>
@@ -152,6 +163,11 @@ const UserProfile = () => {
                                 <img src={logo} alt='Profile Pic' />
                             </div>
                         </div>
+                        {loggedInUserInfo && loggedInUserInfo.username === thisUserInfo.username &&
+                            <svg onClick={() => openChangeAvatarPopup()} className='absolute items-center justify-center hidden p-1 rounded-lg cursor-pointer -top-1 -right-1 group-hover:flex bg-c-grey stroke-hov-blue'xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C6AEF2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel">
+                                <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                                <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+                            </svg>}
                     </div>
                     <div className='flex flex-col author-name-container text-clip'>
                         <div className='relative text-3xl abrilfatface'>
