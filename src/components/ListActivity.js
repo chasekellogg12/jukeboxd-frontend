@@ -21,17 +21,18 @@ const ListActivity = (props) => {
             :
             <>
                 {passedData.slice().reverse().map(recentActivity => ( // for every user in the list of users, put its name in its own div
-                    <div className='flex items-center justify-between w-2/3 group' key={recentActivity}>
-                        <div className='flex p-1 space-x-1 text-white truncate rounded-md group-hover:text-left group-hover:whitespace-normal bg-dark-purple hover:no-truncate'>
-                            <div>{recentActivity.userWhoActed}</div>
+                    <div className='flex items-center justify-between w-2/3 p-2 border rounded-md group border-dark-purple hover:border-c-grey' key={recentActivity}>
+                        <div className='text-xs italic text-dark-purple activity-date'>{formatDistanceToNow(new Date(recentActivity.timeCreated), { addSuffix: true })}</div>
+                        <div className='flex p-1 space-x-1 text-white truncate rounded-md text-nowrap group-hover:whitespace-nowrap group-hover:overflow-visible group-hover:truncate-0 bg-c-grey'>
+                            <div className='text-h-grey'>{recentActivity.userWhoActed}</div>
                             <div className='activity-text'>{recentActivity.activityString}</div>
                             {recentActivity.activityString[recentActivity.activityString.length-2] == 'f' ? 
                                 <div>{recentActivity.thingActedUpon}</div> :
-                                <button onClick={() => handleProfileNavigate(`/profile/${recentActivity.thingActedUpon.slice(1)}`)}className='text-c-grey hover:text-h-grey'>{recentActivity.thingActedUpon}</button>
+                                <button onClick={() => handleProfileNavigate(`/profile/${recentActivity.thingActedUpon.slice(1)}`)}className='text-hov-blue hover:text-dark-purple'>{recentActivity.thingActedUpon}</button>
                             }
             
                         </div>
-                        <div className='text-xs italic activity-date'>{formatDistanceToNow(new Date(recentActivity.timeCreated), { addSuffix: true })}</div>
+                        
                     </div>
                 ))}
             </>
