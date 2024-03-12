@@ -102,7 +102,7 @@ export default function PostWall(props) {
         <div className='flex-col reviews'>
             {sectionName && 
                 <div className='flex justify-between w-full section-title-container'>
-                    <span className='text-lg italic text-hov-blue abrilfatface'>{sectionName}</span>
+                    <span className='text-lg italic text-hov-blue poppins'>{sectionName}</span>
                     {totalPosts > 2 && <button className='text-sm text-sh-grey'onClick={() => props.onSeeMore(3)}>See More</button>}
                 </div>
             }   
@@ -110,7 +110,7 @@ export default function PostWall(props) {
                 {/* {console.log(loggedInUserInfo) // THIS IS NORMAL WHEN LOGGEDINUSERINFO IS FROM HOME, BUT UNDEFINED WHEN FROM PROFILE} */}
                 {listOfPosts.length === 0 && 
                     <div className='w-full flex flex-col justify-center p-1 m-1 border rounded-lg shadow hover:shadow-lg post-container border-[#4950D5] bg-c-grey text-sh-grey shadow-sh-grey'>
-                        <div className='flex justify-center my-6 text-lg'>Nothing here yet!</div>
+                        <div className='flex justify-center my-6 text-lg'>There is nothing here yet.</div>
                     </div>
                 }
                 {listOfPosts.length !== 0 && listOfPosts[pageNumber].slice().map(post => ( // for every user in the list of users, put its name in its own div 

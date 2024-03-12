@@ -193,28 +193,28 @@ const UserProfile = () => {
                     </div>
                 </div>
                 
-                <div className='flex mr-6 space-x-4 header-info-container text-hov-blue'> 
-                    <button className='flex-col abrilfatface hover:text-white' onClick={() => openPopup(0)}>
+                <div className='flex mr-6 space-x-4 header-info-container text-h-grey'> 
+                    <button className='flex-col poppins hover:text-dark-purple' onClick={() => openPopup(0)}>
                         <div>{thisUserInfo.followingBasicInfo.length}</div> 
                         <div>Following</div>
                     </button>
-                    <button className='flex-col abrilfatface hover:text-white' onClick={() => openPopup(1)}>
+                    <button className='flex-col poppins hover:text-dark-purple' onClick={() => openPopup(1)}>
                         <div>{thisUserInfo.followersBasicInfo.length}</div> 
                         <div>Followers</div>
                     </button>
                 </div>
             </div>
-            <div className='flex justify-around w-full p-4 text-white rounded-lg buttons-container bg-b-blue'>
-                <button className='abrilfatface' onClick={() => setDisplaySection(1)} style={{ color: displaySection === 1 ? 'white' : '#9ab' }}>Profile</button>
-                <button className='abrilfatface' onClick={() => setDisplaySection(2)} style={{ color: displaySection === 2 ? 'white' : '#9ab' }}>Recent Activity</button>
-                <button className='abrilfatface' onClick={() => setDisplaySection(3)} style={{ color: displaySection === 3 ? 'white' : '#9ab' }}>Reviews</button>
-                <button className='abrilfatface' onClick={() => setDisplaySection(4)} style={{ color: displaySection === 4 ? 'white' : '#9ab' }}>Likes</button>
+            <div className='flex justify-around w-full p-4 rounded-lg text-hov-blue buttons-container bg-b-blue'>
+                <button className='poppins ' onClick={() => setDisplaySection(1)} style={{ color: displaySection === 1 ? '#FFA726' : '#4950D5' }}>Profile</button>
+                <button className='poppins' onClick={() => setDisplaySection(2)} style={{ color: displaySection === 2 ? '#FFA726' : '#4950D5' }}>Recent Activity</button>
+                <button className='poppins' onClick={() => setDisplaySection(3)} style={{ color: displaySection === 3 ? '#FFA726' : '#4950D5' }}>Reviews</button>
+                <button className='poppins' onClick={() => setDisplaySection(4)} style={{ color: displaySection === 4 ? '#FFA726' : '#4950D5' }}>Likes</button>
             </div>
             <div className='flex-col w-full p-4 rounded-lg sections-container bg-b-blue'>
                 {displaySection === 1 && 
                     <div className='flex-col space-y-6 section'>
                         <div className='flex-col top-four-section'>
-                            <span className='text-lg italic text-hov-blue abrilfatface'>Favorite Tracks</span>
+                            <span className='text-lg italic text-hov-blue poppins'>Favorite Tracks</span>
                             <TopFour passedData={thisUserInfo.topFour} loggedInUser={loggedInUserInfo} thisUser={thisUserInfo} openSearch={openSearchPopup}/> 
                         </div>
                         <div className='recent-reviews'>

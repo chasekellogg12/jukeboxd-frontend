@@ -82,7 +82,7 @@ export default function Post(props) {
 
                 <div className='flex flex-col justify-center w-3/4 m-2 break-all whitespace-normal info-container'>
                     <div className='flex items-baseline song-name-container'>
-                        <span className='text-2xl font-extrabold text-white song-name'>{postSubjectBasicInfo.name}</span>
+                        <span className='text-2xl font-extrabold text-white song-name abrilfatface'>{postSubjectBasicInfo.name}</span>
                         <span className='pl-1 text-sm font-thin song-release-date'>{postSubjectBasicInfo.year}</span>
                     </div>
                     <div className='flex mb-6 text-sm artist-name'>
@@ -96,10 +96,10 @@ export default function Post(props) {
                                     alt='Profile pic'
                                 />
                             </div>
-                        <span className='mr-4 text-white post-author-name' style={{ cursor: 'pointer' }} onClick={() => navigate(`/profile/${author.username}`)}>{author.name}</span>
+                        <span className='mr-4 text-sm text-white post-author-name' style={{ cursor: 'pointer' }} onClick={() => navigate(`/profile/${author.username}`)}>{author.name}</span>
                         <StarRating fixedRating={rating} size={'text-lg'}/>
                     </div>
-                    <div className='flex post-text'>
+                    <div className='flex mt-2 post-text'>
                         <p>{text}</p>
                     </div>
                 </div>
@@ -119,7 +119,7 @@ export default function Post(props) {
                     <div className='mt-1.5 ml-1.5 text-sm text-sh-grey mr-4'>{usernamesWhoLiked.length}</div>
                     {loggedInUserInfo && author.username === loggedInUserInfo.username && <svg className='cursor-pointer hover:stroke-orange-400' onClick={handleDeleteClick} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6AEF2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>}
                 </div>
-                <span className='text-sm italic font-light post-date'>{relativeTime}</span>
+                <span className='text-sm italic font-light post-date inter'>{relativeTime}</span>
             </div>
         </div>
         // have a button that only the author can see. When pressed, make post request to bakcend with JWT token and postId signaling to remove the post.

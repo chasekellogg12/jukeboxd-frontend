@@ -26,8 +26,8 @@ const Home = ({ updateHeader }) => {
                     const user = await UserService.getLoggedInUserInfo(localStorage.getItem('jwtToken')); // we can also do this one time when the user is authenticated and save the user data in storage
                     setLoggedInUserInfo(user)
                     setGreeting(
-                        <div className='flex-col items-center m-6 text-5xl text-white abrilfatface'>
-                            <h1>Welcome back, {user.name}!</h1>
+                        <div className='flex-col items-center m-6 text-5xl text-white poppins'>
+                            <h1>Welcome back, {user.name}.</h1>
                         </div>
                     );
                 } catch(error) {
@@ -35,14 +35,14 @@ const Home = ({ updateHeader }) => {
                 }
             } else {
                 setGreeting(
-                <div className='flex-col items-center m-6 text-5xl text-white abrilfatface'>
-                    <h1 className='h-grey'>Welcome to Jukeboxd!</h1>
+                <div className='flex-col items-center m-6 text-5xl text-white poppins'>
+                    <h1 className='h-grey'>Welcome to Jukeboxd.</h1>
                     <div className='flex justify-center space-x-2'>
-                        <button className='text-h-grey hover:text-hov-blue'onClick={() => navigate("/create-user")}>
+                        <button className='text-orange-400 hover:text-dark-purple'onClick={() => navigate("/create-user")}>
                             Sign Up
                         </button>
                         <span> or </span>
-                        <button className='text-h-grey hover:text-hov-blue' onClick={() => navigate("/login")}>
+                        <button className='text-orange-400 hover:text-dark-purple' onClick={() => navigate("/login")}>
                             Login
                         </button>
                     </div>
@@ -97,12 +97,12 @@ const Home = ({ updateHeader }) => {
                 {/* Pass listOfUsers to PostWall only if it's not empty */}
                 <div className='flex flex-col justify-center recent-posts'>
                     {localStorage.getItem('jwtToken') && 
-                        <div className='flex items-start justify-center w-full mb-4 space-x-10 abrilfatface'> 
+                        <div className='flex items-start justify-center w-full mb-4 space-x-10 poppins'> 
                             {feedType === 0 ? <button className='inline-block text-orange-700 drop-shadow(0 10px 8px rgb(251 146 60 / .50))'>All Users</button> : <button onClick={() => changeFeed(0)} className='text-orange-400 hover:text-orange-700'>All Users</button>}
                             {feedType === 0 ? <button onClick={() => changeFeed(1)} className='text-orange-400 hover:text-orange-700'>Following</button> : <button className='text-orange-700'>Following</button>}
                         </div>
                     }
-                    <div className='text-lg italic text-hov-blue abrilfatface'>Recent reviews on Jukeboxd...</div>
+                    <div className='text-lg italic text-hov-blue poppins'>Recent reviews on Jukeboxd...</div>
                     <PostWall passedData={!showAll ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} />
                 </div>
             </div>
