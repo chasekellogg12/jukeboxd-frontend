@@ -14,8 +14,8 @@ const ListFollowers = (props) => {
     return (
         <div>
             {props.isOpen && (
-            <div onClick={props.onClose} className='fixed top-0 left-0 z-10 flex items-center justify-center w-full h-full bg-gray-700 bg-opacity-50 text-h-grey'>
-                <div onClick={(e) => e.stopPropagation()} className='z-10 flex flex-col items-center w-1/3 p-6 space-y-3 border rounded-lg shadow-lg bg-c-grey'>
+            <div onClick={props.onClose} className='fixed top-0 left-0 z-40 flex items-center justify-center w-full h-full bg-gray-700 bg-opacity-50 text-h-grey'>
+                <div onClick={(e) => e.stopPropagation()} className='z-50 flex flex-col items-center w-1/3 p-6 space-y-3 border rounded-lg shadow-lg bg-c-grey'>
 
                     <button onClick={props.onClose} className='text-sm'>Close</button>
                     <div className='overflow-auto max-h-96'>

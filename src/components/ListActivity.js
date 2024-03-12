@@ -13,7 +13,7 @@ const ListActivity = (props) => {
     }
 
     return (
-        <div className='flex flex-col items-center list-of-recent-activity text-h-grey'> 
+        <div className='flex flex-col items-center space-y-2 list-of-recent-activity text-h-grey'> 
             {passedData.length == 0 ? 
                 <div className='flex items-center justify-center w-2/3'>
                     Nothing here yet!
@@ -21,13 +21,13 @@ const ListActivity = (props) => {
             :
             <>
                 {passedData.slice().reverse().map(recentActivity => ( // for every user in the list of users, put its name in its own div
-                    <div className='flex items-center justify-between w-2/3' key={recentActivity}>
-                        <div className='flex space-x-1'>
+                    <div className='flex items-center justify-between w-2/3 group' key={recentActivity}>
+                        <div className='flex p-1 space-x-1 text-white truncate rounded-md group-hover:text-left group-hover:whitespace-normal bg-dark-purple hover:no-truncate'>
                             <div>{recentActivity.userWhoActed}</div>
                             <div className='activity-text'>{recentActivity.activityString}</div>
                             {recentActivity.activityString[recentActivity.activityString.length-2] == 'f' ? 
                                 <div>{recentActivity.thingActedUpon}</div> :
-                                <button onClick={() => handleProfileNavigate(`/profile/${recentActivity.thingActedUpon.slice(1)}`)}className='text-white'>{recentActivity.thingActedUpon}</button>
+                                <button onClick={() => handleProfileNavigate(`/profile/${recentActivity.thingActedUpon.slice(1)}`)}className='text-c-grey hover:text-h-grey'>{recentActivity.thingActedUpon}</button>
                             }
             
                         </div>

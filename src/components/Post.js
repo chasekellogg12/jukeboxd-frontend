@@ -74,13 +74,13 @@ export default function Post(props) {
     if (isLoading) return <div>Loading...</div>
 
     return (
-        <div className='flex flex-col justify-between p-1 m-1 border rounded-lg shadow hover:shadow-lg post-container border-[#4950D5] bg-c-grey text-sh-grey shadow-sh-grey'>
-            <div className='flex content-container'>
-                <div className='w-1/6 m-2 cover-art-container'>
+        <div className='flex flex-col justify-between m-1 p-1 border rounded-lg shadow hover:shadow-lg post-container border-[#4950D5] bg-c-grey text-sh-grey shadow-sh-grey'>
+            <div className='flex items-center m-1 content-container'>
+                <div className='mx-2 mt-1 mr-4 w-36 cover-art-container'>
                     <img src={postSubjectBasicInfo.albumCoverArt} alt='track cover art' style={{borderRadius: '8px'}}></img>
                 </div>
 
-                <div className='flex flex-col justify-center w-3/4 m-2 break-all whitespace-normal info-container'>
+                <div className='flex flex-col justify-center w-3/4 break-all whitespace-normal info-container'>
                     <div className='flex items-baseline song-name-container'>
                         <span className='text-2xl font-extrabold text-white song-name abrilfatface'>{postSubjectBasicInfo.name}</span>
                         <span className='pl-1 text-sm font-thin song-release-date'>{postSubjectBasicInfo.year}</span>
@@ -88,9 +88,9 @@ export default function Post(props) {
                     <div className='flex mb-6 text-sm artist-name'>
                         <span>{postSubjectBasicInfo.artist}</span>
                     </div>
-                    <div className='flex items-center mb-4 author-container'>
+                    <div className='flex items-center mb-4 ml-3 author-container'>
                         {/* <div className='avatar'></div> */}
-                            <div className='mr-2 rounded-full w-7 h-7 ring ring-offset-base-100 ring-offset-2'>
+                            <div onClick={() => navigate(`/profile/${author.username}`)} className='mr-2 rounded-full cursor-pointer w-7 h-7 ring ring-offset-base-100 ring-offset-2'>
                                 <img
                                     src={logo}
                                     alt='Profile pic'
@@ -116,10 +116,10 @@ export default function Post(props) {
                             <svg className='stroke-hov-blue' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
                         </button>
                     } 
-                    <div className='mt-1.5 ml-1.5 text-sm text-sh-grey mr-4'>{usernamesWhoLiked.length}</div>
+                    <div className={`mt-1.5 ml-1.5 text-sm ${!hasLiked ? 'text-sh-grey' : 'text-hov-blue'} mr-4`}>{usernamesWhoLiked.length}</div>
                     {loggedInUserInfo && author.username === loggedInUserInfo.username && <svg className='cursor-pointer hover:stroke-orange-400' onClick={handleDeleteClick} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6AEF2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="bevel"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>}
                 </div>
-                <span className='text-sm italic font-light post-date inter'>{relativeTime}</span>
+                <div className='flex items-center text-xs italic font-light align-text-bottom post-date inter'>{relativeTime}</div>
             </div>
         </div>
         // have a button that only the author can see. When pressed, make post request to bakcend with JWT token and postId signaling to remove the post.
