@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import background from '../assets/font/backsplash.jpeg';
 import "../styles/home.css";
 import { set } from 'date-fns';
+import { Greeting } from '../components/Greeting';
 
 const Home = ({ updateHeader }) => {
     // have buttons that direct us to the CreateUser page or the ListUser page
@@ -27,7 +28,7 @@ const Home = ({ updateHeader }) => {
                     setLoggedInUserInfo(user)
                     setGreeting(
                         <div className='flex-col items-center m-6 text-5xl tracking-wide text-center text-white poppins'>
-                            <h1>Welcome back, {user.name}.</h1>
+                            <Greeting words1={`Welcome back, ${user.name}.`} words2={" "}></Greeting>
                         </div>
                     );
                 } catch(error) {
@@ -39,12 +40,13 @@ const Home = ({ updateHeader }) => {
                     <div className='space-x-2.5 flex-col text-center'>
                         {/* <span className='h-grey'>Welcome to</span>
                         <span className=' bg-clip-text bg-gradient-to-r from-hov-blue via-dark-purple to-hov-blue'>Jukeboxd</span> */}
-                        <div>Track music you’ve listened to.</div>
-                        <div>Tell your friends what’s good.</div>
+                        {/* <div>Track music you’ve listened to.</div>
+                        <div>Tell your friends what’s good.</div> */}
+                        <Greeting words1={"Track music you've listened to."} words2={"Tell your friends what's good."}/>
                     </div>
                     
                     <div className='flex justify-center p-1 space-x-10 text-3xl font-semibold'>
-                        <button className='px-3 py-2 pb-2.5 rounded-md bg-gradient-to-r from-orange-400 to-dark-purple hover:from-dark-purple hover:to-dark-purple'onClick={() => navigate("/create-user")}>
+                        <button className='px-3 py-2 pb-2.5 rounded-md bg-gradient-to-r from-orange-400 to-dark-purple hover:from-orange-400 hover:to-orange-400'onClick={() => navigate("/create-user")}>
                             Sign Up - It's Free
                         </button>
                     </div>
