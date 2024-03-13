@@ -3,6 +3,7 @@ import { useState } from 'react';
 import UserService from '../services/UserService';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { WavyBackground } from '../components/WavyBackground';
 
 export default function Login({ updateHeader }) { 
     const [username, setUsername] = useState('');
@@ -55,8 +56,9 @@ export default function Login({ updateHeader }) {
             // e is an object that contains information about an even that occurred
             // e.target is the HTML element that triggered the event (the form element inpout box)
             // e.target.value is the current value of the form element when the event occurred 
-            <div className='flex flex-col items-center justify-center text-h-grey abrilfatface'>
-                <div className='flex flex-col items-center justify-center w-3/5 p-4 border rounded-lg login-container border-h-grey'>
+            <WavyBackground backgroundFill={'#070c1b'} containerClassName={'flex flex-col items-center justify-center text-h-grey abrilfatface'} className={'flex flex-col items-center justify-center w-3/5 p-4 border rounded-lg login-container border-dark-purple bg-c-grey'}>
+            {/* <div className='flex flex-col items-center justify-center text-h-grey abrilfatface'>
+                <div className='flex flex-col items-center justify-center w-3/5 p-4 border rounded-lg login-container border-h-grey'> */}
                     <form onSubmit={handleSubmit} className='flex flex-col items-center space-y-3'> 
                         <label>
                             <h3>Username</h3>
@@ -66,11 +68,12 @@ export default function Login({ updateHeader }) {
                             <h3>Password</h3>
                             <input className='p-1 text-black rounded-md poppins' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                         </label>
-                        <button type='submit' className='w-1/2 px-2 py-1 text-white rounded-lg bg-b-green hover:bg-green-600 poppins'> 
+                        <button type='submit' className='w-1/2 px-2 py-1 text-white rounded-lg bg-hov-blue hover:bg-dark-purple poppins'> 
                             Login
                         </button>
                     </form>
-                </div>
-            </div>
+                {/* </div>
+            </div> */}
+        </WavyBackground>
     );
 }

@@ -46,7 +46,7 @@ const Home = ({ updateHeader }) => {
                     </div>
                     
                     <div className='flex justify-center p-1 space-x-10 text-3xl font-semibold'>
-                        <button className='px-3 py-2 pb-2.5 rounded-md bg-gradient-to-r from-orange-400 to-dark-purple hover:from-orange-400 hover:to-orange-400'onClick={() => navigate("/create-user")}>
+                        <button className='px-3 py-2 pb-2.5 rounded-md bg-gradient-to-r from-dark-purple via-orange-400 to-dark-purple hover:from-dark-purple hover:to-dark-purple'onClick={() => navigate("/create-user")}>
                             Sign Up - It's Free
                         </button>
                     </div>
