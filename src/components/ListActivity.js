@@ -16,7 +16,7 @@ const ListActivity = (props) => {
         <div className='flex flex-col items-center space-y-2 list-of-recent-activity text-h-grey'> 
             {passedData.length == 0 ? 
                 <div className='flex items-center justify-center w-2/3'>
-                    Nothing here yet!
+                    There is nothing here yet.
                 </div>
             :
             <>

@@ -26,7 +26,7 @@ const Home = ({ updateHeader }) => {
                     const user = await UserService.getLoggedInUserInfo(localStorage.getItem('jwtToken')); // we can also do this one time when the user is authenticated and save the user data in storage
                     setLoggedInUserInfo(user)
                     setGreeting(
-                        <div className='flex-col items-center m-6 text-5xl text-white poppins'>
+                        <div className='flex-col items-center m-6 text-5xl tracking-wide text-center text-white poppins'>
                             <h1>Welcome back, {user.name}.</h1>
                         </div>
                     );
@@ -35,19 +35,17 @@ const Home = ({ updateHeader }) => {
                 }
             } else {
                 setGreeting(
-                <div className='flex-col items-center m-4 text-5xl font-bold tracking-wider text-white inter poppins'>
-                    <div className='space-x-2.5'>
-                        <span className='h-grey'>Welcome to</span>
-                        <span className=' bg-clip-text bg-gradient-to-r from-hov-blue via-dark-purple to-hov-blue'>Jukeboxd</span>
+                <div className='flex-col items-center m-4 space-y-4 text-5xl font-bold tracking-wide text-white poppins'>
+                    <div className='space-x-2.5 flex-col text-center'>
+                        {/* <span className='h-grey'>Welcome to</span>
+                        <span className=' bg-clip-text bg-gradient-to-r from-hov-blue via-dark-purple to-hov-blue'>Jukeboxd</span> */}
+                        <div>Track music you’ve listened to.</div>
+                        <div>Tell your friends what’s good.</div>
                     </div>
                     
-                    <div className='flex justify-center p-1 space-x-2 font-semibold'>
-                        <button className='text-transparent hover:text-dark-purple bg-clip-text bg-gradient-to-r from-dark-purple to-orange-400'onClick={() => navigate("/create-user")}>
-                            Sign Up
-                        </button>
-                        <span> or </span>
-                        <button className='text-transparent hover:text-dark-purple bg-clip-text bg-gradient-to-r from-orange-400 to-dark-purple' onClick={() => navigate("/login")}>
-                            Login
+                    <div className='flex justify-center p-1 space-x-10 text-3xl font-semibold'>
+                        <button className='px-3 py-2 pb-2.5 rounded-md bg-gradient-to-r from-orange-400 to-dark-purple hover:from-dark-purple hover:to-dark-purple'onClick={() => navigate("/create-user")}>
+                            Sign Up - It's Free
                         </button>
                     </div>
                 </div>
@@ -77,7 +75,7 @@ const Home = ({ updateHeader }) => {
     return (
         <div className='flex flex-col items-center'>
             <div
-                className="started-backdrop block md:h-[550px] md:mt-[-4%] md:max-h-[550px] md:w-[850px] md:m-auto max-h-[250px] h-[250px] justify-center"
+                className="started-backdrop block md:h-[550px] md:mt-[-10%] md:max-h-[550px] md:w-[850px] md:m-auto max-h-[250px] h-[250px] justify-center"
                 style={{
                 backgroundImage: `url(https://th.bing.com/th/id/OIG3.vODywcOaLE6vPBCreyBm?w=1024&h=1024&rs=1&pid=ImgDetMain)`,
                 }}>
@@ -88,7 +86,7 @@ const Home = ({ updateHeader }) => {
                 items-center 
                 relative 
                 mt-[5%]
-                md:mt-[-25%] 
+                md:mt-[-15%] 
                 gap-2 
                 z-40">
                     <div className='flex justify-center mb-3 welcome-message'>

@@ -49,9 +49,9 @@ export default function Header({ updateHeader }) { // we need to re-render the h
     return (
         <div className='z-30 sticky flex items-center justify-center text-[#C6AEF2] bg-transparent min-h-16 poppins'>
             <div className='flex items-center justify-between w-full'>
-                <button className='flex items-end space-x-0.25 italic text-white abrilfatface hover:text-orange-400' onClick={() => navigate("/")}>
-                    <img className='rounded-full w-7' src={logo2}></img>
-                    <span className='text-3xl abrilfatface'>ukeboxd</span>
+                <button className='flex space-x-0.25 italic text-white abrilfatface' onClick={() => navigate("/")}>
+                    <img className='rounded-full w-7 mr-[-4%]' src={logo2}></img>
+                    <div className='p-1 text-3xl text-transparent abrilfatface bg-clip-text bg-gradient-to-r from-h-grey to-orange-400 hover:to-h-grey'>ukeboxd</div>
                 </button>
                 <ul className="flex space-x-6">
                     {/* <li>
