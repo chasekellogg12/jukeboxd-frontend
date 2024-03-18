@@ -149,7 +149,7 @@ const UserProfile = () => {
     };
 
     return (
-        <div className='flex flex-col items-center justify-center space-y-6 profile-container'>
+        <div className='flex flex-col items-center justify-center mt-10 space-y-6 profile-container'>
             <div className='flex items-center justify-between w-full p-4 text-white rounded-lg header-container bg-b-blue group'>
                 <TrackSearch isOpen={isSearchOpen} onClose={closeSearchPopup} passUp={addTrackToBackend}/>
                 <NewName isOpen={isChangeNameOpen} onClose={closeChangeNamePopup} currUser={loggedInUserInfo} resetProfile={findProfileUserInfo}/>

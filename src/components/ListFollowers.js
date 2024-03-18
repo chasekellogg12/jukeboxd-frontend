@@ -15,19 +15,19 @@ const ListFollowers = (props) => {
         <div>
             {props.isOpen && (
             <div onClick={props.onClose} className='fixed top-0 left-0 z-40 flex items-center justify-center w-full h-full bg-gray-700 bg-opacity-50 text-h-grey'>
-                <div onClick={(e) => e.stopPropagation()} className='z-50 flex flex-col items-center w-1/3 p-6 space-y-3 border rounded-lg shadow-lg bg-c-grey'>
+                <div onClick={(e) => e.stopPropagation()} className='z-50 flex flex-col items-center w-1/3 p-6 space-y-3 border rounded-lg shadow-lg bg-c-grey min-w-96'>
 
                     <button onClick={props.onClose} className='text-sm'>Close</button>
                     <div className='overflow-auto max-h-96'>
                         {passedData.map(user => ( // for every track, get it's album cover art image 
                             <div key={user.username} className='mb-2.5 ml-1'>
-                                <button className='flex items-center space-x-3 text-sm rounded-md hover:bg-black' onClick={() => handleSelect(user.username)}>
-                                    <img className='w-1/12 rounded-full ring-1 ring-dark-purple' src={user.avatar} alt='profile pic'></img>
+                                <button className='flex items-center p-1 space-x-3 text-sm rounded-md hover:bg-dark-purple group' onClick={() => handleSelect(user.username)}>
+                                    <img className='w-1/12 rounded-full ring-1 ring-dark-purple group-hover:ring-c-grey' src={user.avatar} alt='profile pic'></img>
                                     <div className='flex flex-col items-start justify-start'>
                                         <div className='flex items-center space-x-1 title'>
-                                            <div className='text-white abrilfatface'>{user.name}</div>
+                                            <div className='text-base text-white abrilfatface'>{user.name}</div>
                                         </div>
-                                        <div className='text-sm italic'>@{user.username}</div>
+                                        <div className='text-xs italic'>@{user.username}</div>
                                     </div>
 
                                     
