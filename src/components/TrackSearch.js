@@ -77,28 +77,28 @@ export default function TrackSearch(props) {
         <>
             {props.isOpen && (
             <div onClick={props.onClose} className='fixed top-0 left-0 z-40 flex items-center justify-center w-full h-full bg-gray-700 bg-opacity-50 text-h-grey'>
-                <div onClick={(e) => e.stopPropagation()} className='z-50 flex flex-col items-center w-1/3 p-6 space-y-3 border rounded-lg shadow-lg  min-w-96 bg-c-grey'>
+                <div onClick={(e) => e.stopPropagation()} className='z-50 flex flex-col items-center w-1/3 p-6 space-y-3 border rounded-lg shadow-lg min-w-96 bg-c-grey'>
                     <h1 className='text-lg text-white abrilfatface'>Find a Track</h1>
                     <form onSubmit={handleSearch}> 
-                        <label className='space-x-2'>
+                        <label className='space-x-2 poppins'>
                             <input className='p-1 rounded-md text-c-grey' type='text' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-                            <button type='submit'> Search </button>
+                            <button type='submit poppins'> Search </button>
                         </label>
                         
                     </form>
                     <button onClick={props.onClose} className='text-sm'>Close</button>
                     {areResultsShown && (
-                        <div className='overflow-auto max-h-96'>
+                        <div className='overflow-x-hidden overflow-y-auto max-h-96'>
                             {searchResults.map(track => ( // for every track, get it's album cover art image 
                                 <div key={track.id} className='mb-2.5'>
-                                    <button className='flex items-center space-x-3 text-sm rounded-md hover:bg-dark-purple' onClick={() => handleSelect(track)}>
+                                    <button className='flex items-center space-x-3 text-sm text-left rounded-md hover:bg-dark-purple' onClick={() => handleSelect(track)}>
                                         {track.album ? <img className='w-1/12 ml-0.5 rounded-md'src={track.album.images[0].url} alt='coverart'></img> : <img src={logo} alt='coverart'></img>}
                                         <div className='flex flex-col items-start justify-start'>
                                             <div className='flex items-center space-x-1 title'>
                                                 <div className='text-white'>{track.name}</div>
                                                 {track.explicit && <div className='flex flex-col items-center px-1 py-0 text-xs text-center text-gray-700 rounded-sm bg-h-grey'>E</div>}
                                             </div>
-                                            <div className='text-sm italic'>{track.artists ? track.artists[0].name : ''}</div>
+                                            <div className='text-sm italic poppins'>{track.artists ? track.artists[0].name : ''}</div>
                                         </div>
 
                                         

@@ -17,7 +17,7 @@ export default function SiteFooter() { // we need to re-render the header when c
 
     
     return (
-        <div className='sticky z-30 flex flex-col items-center w-full mt-10 space-y-3 text-xs text-dark-purple bg-c-grey min-h-16 poppins'>
+        <div className='sticky z-10 flex flex-col items-center w-full mt-10 space-y-3 text-xs text-dark-purple bg-c-grey min-h-16 poppins'>
             <div className='flex items-center justify-evenly app-content'>
                 <span>Contact</span>
                 <span>Portfolio</span>
