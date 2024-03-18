@@ -51,7 +51,7 @@ export default function Header({ updateHeader }) { // we need to re-render the h
             <div className='flex items-center justify-between w-full'>
                 <button className='flex space-x-0.25 italic text-white abrilfatface' onClick={() => navigate("/")}>
                     <img className='rounded-full w-7 mr-[-4%]' src={logo2}></img>
-                    <div className='p-1 text-3xl text-transparent abrilfatface bg-clip-text bg-gradient-to-r from-h-grey via-hov-blue to-h-grey hover:via-h-grey hover:to-h-grey'>ukeboxd</div>
+                    <div className='p-1 text-3xl text-transparent abrilfatface bg-clip-text bg-gradient-to-r from-h-grey via-dark-purple to-h-grey hover:via-h-grey hover:to-h-grey'>ukeboxd</div>
                 </button>
                 <ul className="flex space-x-6">
                     {/* <li>

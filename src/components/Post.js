@@ -90,9 +90,10 @@ export default function Post(props) {
                     </div>
                     <div className='flex items-center mb-4 ml-3 author-container'>
                         {/* <div className='avatar'></div> */}
-                            <div onClick={() => navigate(`/profile/${author.username}`)} className='mr-2 rounded-full cursor-pointer w-7 h-7 ring ring-offset-base-100 ring-offset-2'>
+                            <div onClick={() => navigate(`/profile/${author.username}`)} className='mr-2 rounded-full cursor-pointer w-7 h-7 ring ring-dark-purple'>
                                 <img
-                                    src={logo}
+                                    className='rounded-full w-7 h-7'
+                                    src={author.avatar}
                                     alt='Profile pic'
                                 />
                             </div>

@@ -159,8 +159,8 @@ const UserProfile = () => {
                         <div
                         id='avatar'
                         className='w-1/6 drop-shadow-xl'>
-                            <div className='w-40 h-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'>
-                                <img src={logo} alt='Profile Pic' />
+                            <div className='w-40 h-40 rounded-full ring ring-dark-purple'>
+                                <img className='w-40 h-40 rounded-full' src={thisUserInfo.avatar} alt='Profile Pic' />
                             </div>
                         </div>
                         {loggedInUserInfo && loggedInUserInfo.username === thisUserInfo.username &&
