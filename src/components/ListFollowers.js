@@ -22,7 +22,7 @@ const ListFollowers = (props) => {
                         {passedData.map(user => ( // for every track, get it's album cover art image 
                             <div key={user.username} className='mb-2.5 ml-1'>
                                 <button className='flex items-center space-x-3 text-sm rounded-md hover:bg-black' onClick={() => handleSelect(user.username)}>
-                                    <img className='w-1/12 rounded-full ring-1 ring-dark-purple'src={user.avatar} alt='profile pic'></img>
+                                    <img className='w-1/12 rounded-full ring-1 ring-dark-purple' src={user.avatar} alt='profile pic'></img>
                                     <div className='flex flex-col items-start justify-start'>
                                         <div className='flex items-center space-x-1 title'>
                                             <div className='text-white abrilfatface'>{user.name}</div>

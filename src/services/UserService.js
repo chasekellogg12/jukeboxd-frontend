@@ -14,9 +14,9 @@ const UserService = { // UserService is an object that contains the asynchronous
             throw error;
         }
     },
-    updateUser: async(jwtToken, name, email) => {
+    updateUser: async(jwtToken, name, email, avatar) => {
         try {
-            await axios.post('https://jukeboxd-4502c9ba8f0c.herokuapp.com/api/loggedInUserInfo', {name, email}, {
+            await axios.post('https://jukeboxd-4502c9ba8f0c.herokuapp.com/api/loggedInUserInfo', {name, email, avatar}, {
                 headers: {
                     'Authorization': `Bearer ${jwtToken}`
                 }

@@ -12,9 +12,10 @@ export default function NewAvatar(props) {
     const [searchResults, setSearchResults] = useState([]);
     const [toBeSentUp, SetToBeSentUp] = useState(false);
     const defaultPic = 'https://i.imgur.com/GBqcras.png';
+    const [readyToSave, setReadyToSave] = useState(false);
 
-    const [avatar, setAvatar] = useState(props.currUser.avatar);
-    const [preview, setPreview] = useState(defaultPic);
+    const [avatar, setAvatar] = useState(props.currUser.avatar === 'https://i.imgur.com/GBqcras.png' ? '' : props.currUser.avatar);
+    const [preview, setPreview] = useState(props.currUser.avatar === 'https://i.imgur.com/GBqcras.png' ? defaultPic : props.currUser.avatar);
 
     const navigate = useNavigate();
 
@@ -30,9 +31,14 @@ export default function NewAvatar(props) {
     
         // Create a new Image object
         const img = new Image();
-        img.onload = () => setPreview(newAvatar); // Set the preview if the image loads successfully
+        img.onload = () => {
+            setReadyToSave(true);
+            setPreview(newAvatar); // Set the preview if the image loads successfully
+        }
+        
         img.onerror = () => {
             // Set to defaultPic and show toast error if there's an error loading the image
+            setReadyToSave(false);
             setPreview(defaultPic);
             toast.error("Error: The image link you entered is not valid.", {
                 position: "top-center",
@@ -49,8 +55,21 @@ export default function NewAvatar(props) {
     
     const handleSubmit = async (e) => {
         e.preventDefault(); // the post request was finalized AFTER the default action of refreshing the page occurred, so this prevents the default
+        if (preview === defaultPic) {
+            toast.error("Error: Upload a valid image link first.", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        
         try {
-            await UserService.updateUser(localStorage.getItem('jwtToken'), avatar, props.currUser.email);
+            await UserService.updateUser(localStorage.getItem('jwtToken'), props.currUser.name, props.currUser.email, preview);
             props.resetProfile();
             props.onClose();
 
@@ -66,7 +85,7 @@ export default function NewAvatar(props) {
             {props.isOpen && (
             <div onClick={props.onClose} className='fixed top-0 left-0 z-40 flex items-center justify-center w-full h-full bg-gray-700 bg-opacity-50 text-h-grey'>
                 <div onClick={(e) => e.stopPropagation()} className='z-50 flex flex-col items-center w-1/3 p-6 space-y-3 text-center align-middle border rounded-lg shadow-lg min-w-96 bg-c-grey text-clip text-balance'>
-                    <h1 className='text-lg text-white abrilfatface'>Enter an Image Link</h1>
+                    <h1 className='text-xl text-white abrilfatface'>Change Your Profile Picture</h1>
                     <div
                         id='avatar'
                         className='flex items-center justify-center w-full pb-2 drop-shadow-xl'>
@@ -75,9 +94,9 @@ export default function NewAvatar(props) {
                             </div>
                     </div>
                     
-                    <form onSubmit={handleImageChange}> 
-                        <label className='space-x-2'>
-                            <input className='p-1 rounded-md text-c-grey' type='text' value={avatar} onChange={(e) => setAvatar(e.target.value)} />
+                    <form className='w-full' onSubmit={handleImageChange}> 
+                        <label className='space-x-2 '>
+                            <input className='p-1 rounded-md w-60 text-c-grey placeholder:italic placeholder:text-slate-400' placeholder="Enter a valid image link..." type='text' value={avatar} onChange={(e) => setAvatar(e.target.value)} />
                             <button type='submit'> Upload </button>
                         </label>
                     </form>
