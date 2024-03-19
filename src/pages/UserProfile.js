@@ -208,7 +208,7 @@ const UserProfile = () => {
                 <button className='poppins ' onClick={() => setDisplaySection(1)} style={{ color: displaySection === 1 ? '#FFA726' : '#4950D5' }}>Profile</button>
                 <button className='poppins' onClick={() => setDisplaySection(2)} style={{ color: displaySection === 2 ? '#FFA726' : '#4950D5' }}>Recent Activity</button>
                 <button className='poppins' onClick={() => setDisplaySection(3)} style={{ color: displaySection === 3 ? '#FFA726' : '#4950D5' }}>Reviews</button>
-                <button className='poppins' onClick={() => setDisplaySection(4)} style={{ color: displaySection === 4 ? '#FFA726' : '#4950D5' }}>Likes</button>
+                {/* <button className='poppins' onClick={() => setDisplaySection(4)} style={{ color: displaySection === 4 ? '#FFA726' : '#4950D5' }}>Likes</button> */}
             </div>
             <div className='flex-col w-full p-4 rounded-lg sections-container bg-b-blue'>
                 {displaySection === 1 && 
