@@ -221,10 +221,9 @@ const UserProfile = () => {
                             <PostWall passedData={listOfUsers.length > 0 ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} maxPosts={2} sectionName={'Recent Reviews'} onSeeMore={setDisplaySection} onRefreshProfile={findProfileUserInfo}/>
                         </div>
                         
-                        
                         <PostWall passedData={listOfUsers.length > 0 ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} maxPosts={2} sectionName={'Popular Reviews'} onSeeMore={setDisplaySection} onRefreshProfile={findProfileUserInfo}/>
                     </div>}
-                {displaySection === 2 && <ListActivity passedData={thisUserInfo.recentActivity}/>}  
+                {displaySection === 2 && <ListActivity passedData={thisUserInfo.recentActivity.slice(-15)}/>}  
                 {displaySection === 3 && <PostWall passedData={listOfUsers.length > 0 ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} />}
                 {/* {displaySection === 4 && <ListFollowers passedData={thisUserInfo.followingBasicInfo}></ListFollowers>}
                 {displaySection === 5 && <ListFollowers passedData={thisUserInfo.followersBasicInfo}></ListFollowers>} */}
