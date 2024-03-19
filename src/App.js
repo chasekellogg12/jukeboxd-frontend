@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import SiteFooter from './components/SiteFooter';
 import { jwtDecode } from "jwt-decode";
 import { toast } from 'react-toastify';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 
 // we need a global variable that has the JWT token. If the user is not authenticated, this will have ' ' 
@@ -83,6 +84,7 @@ const App = () => {
         </div>
         <SiteFooter/>
       </BrowserRouter>
+      <SpeedInsights/>
     </div>
   );
 }
