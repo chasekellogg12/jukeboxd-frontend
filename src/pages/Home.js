@@ -78,7 +78,7 @@ const Home = ({ updateHeader }) => {
     return (
         <div className='flex flex-col items-center'>
             <div
-                className="started-backdrop block md:h-[550px] md:mt-[-17%] md:max-h-[550px] md:w-[850px] md:m-auto max-h-[250px] h-[250px] justify-center"
+                className="started-backdrop hidden md:block md:h-[550px] md:mt-[-17%] md:max-h-[550px] md:w-[850px] md:m-auto max-h-[250px] h-[250px] justify-center"
                 style={{
                 backgroundImage: `url(https://th.bing.com/th/id/OIG3.vODywcOaLE6vPBCreyBm?w=1024&h=1024&rs=1&pid=ImgDetMain)`,
                 }}>
