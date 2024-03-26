@@ -71,7 +71,7 @@ export default function Rand10(props) {
     }
     
     return (
-        <div className='max-w-[480px] md:min-w-[760px]'>
+        <div className='max-w-[400px] md:min-w-[760px]'>
             <InfiniteMovingCards items={thisTracks} direction='right' speed='slow'></InfiniteMovingCards>
         </div>
     )
