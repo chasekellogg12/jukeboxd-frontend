@@ -11,7 +11,7 @@
     "axios": "^1.6.5",
     "clsx": "^2.1.0",
     "date-fns": "^3.3.1",
-    "framer-motion": "^11.0.12",
+    "framer-motion": "^11.0.22",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "postcss": "^8.4.35",
@@ -23,7 +23,7 @@
     "react-toastify": "^10.0.4",
     "simplex-noise": "^4.0.1",
     "tailwind": "^4.0.0",
-    "tailwind-merge": "^2.2.1",
+    "tailwind-merge": "^2.2.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

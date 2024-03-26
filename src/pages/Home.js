@@ -6,6 +6,7 @@ import background from '../assets/font/backsplash.jpeg';
 import "../styles/home.css";
 import { set } from 'date-fns';
 import { Greeting } from '../components/Greeting';
+import Rand10 from '../components/Rand10';
 
 const Home = ({ updateHeader }) => {
     // have buttons that direct us to the CreateUser page or the ListUser page
@@ -28,7 +29,7 @@ const Home = ({ updateHeader }) => {
                     setLoggedInUserInfo(user)
                     setGreeting(
                         <div className='flex-col items-center m-6 text-5xl tracking-wide text-center text-white poppins'>
-                            <Greeting words1={`Welcome back, ${user.name}.`} words2={" "}></Greeting>
+                            <Greeting words1={`Welcome to Jukeboxd, ${user.name}.`} words2={" "}></Greeting>
                         </div>
                     );
                 } catch(error) {
@@ -36,7 +37,7 @@ const Home = ({ updateHeader }) => {
                 }
             } else {
                 setGreeting(
-                <div className='flex-col items-center m-4 space-y-4 text-5xl font-bold tracking-wide text-white poppins'>
+                <div className='flex-col items-center m-4 space-y-2 text-5xl font-bold tracking-wide text-white poppins'>
                     <div className='space-x-2.5 flex-col text-center'>
                         {/* <span className='h-grey'>Welcome to</span>
                         <span className=' bg-clip-text bg-gradient-to-r from-hov-blue via-dark-purple to-hov-blue'>Jukeboxd</span> */}
@@ -45,8 +46,8 @@ const Home = ({ updateHeader }) => {
                         <Greeting words1={"Track music you've listened to."} words2={"Tell your friends what's good."}/>
                     </div>
                     
-                    <div className='flex justify-center p-1 space-x-10 text-3xl font-semibold'>
-                        <button className='px-4 py-2 pb-2.5 rounded-full bg-gradient-to-r from-dark-purple via-dark-purple to-dark-purple hover:from-dark-purple hover:via-orange-400 hover:to-dark-purple'onClick={() => navigate("/create-user")}>
+                    <div className='flex justify-center p-1 space-x-10 text-2xl font-semibold'>
+                        <button className='px-5 py-2 pb-2.5 rounded-full bg-gradient-to-r from-dark-purple via-dark-purple to-dark-purple hover:from-dark-purple hover:via-orange-400 hover:to-dark-purple'onClick={() => navigate("/create-user")}>
                             Sign Up - It's Free
                         </button>
                     </div>
@@ -77,28 +78,31 @@ const Home = ({ updateHeader }) => {
     return (
         <div className='flex flex-col items-center'>
             <div
-                className="started-backdrop block md:h-[550px] md:mt-[-10%] md:max-h-[550px] md:w-[850px] md:m-auto max-h-[250px] h-[250px] justify-center"
+                className="started-backdrop block md:h-[550px] md:mt-[-17%] md:max-h-[550px] md:w-[850px] md:m-auto max-h-[250px] h-[250px] justify-center"
                 style={{
                 backgroundImage: `url(https://th.bing.com/th/id/OIG3.vODywcOaLE6vPBCreyBm?w=1024&h=1024&rs=1&pid=ImgDetMain)`,
                 }}>
             </div>
+            
             <div
                 className="flex 
                 flex-col 
                 items-center 
                 relative 
                 mt-[5%]
-                md:mt-[-15%] 
+                md:mt-[-12%] 
                 gap-2 
                 z-40">
-                    <div className='flex justify-center mb-3 welcome-message'>
+                    <Rand10></Rand10>
+                    <div className='flex justify-center mb-3 welcome-message mt-[-2]'>
                         {greeting}
                     </div>
             </div>
             {/* readd w-3/5 */}
-            <div className='flex-col items-center w-full home-container'>
+            <div className='flex-col items-center w-full space-y-5 home-container'>
                 
                 {/* Pass listOfUsers to PostWall only if it's not empty */}
+                {/* <Rand10></Rand10> */}
                 <div className='flex flex-col justify-center recent-posts'>
                     {localStorage.getItem('jwtToken') && 
                         <div className='flex items-start justify-center w-full mb-4 space-x-10 poppins'> 
@@ -107,6 +111,7 @@ const Home = ({ updateHeader }) => {
                         </div>
                     }
                     <div className='text-lg italic text-hov-blue poppins'>Recent reviews on Jukeboxd...</div>
+                    
                     <PostWall passedData={!showAll ? [listOfUsers, loggedInUserInfo] : loggedInUserInfo} />
                 </div>
             </div>

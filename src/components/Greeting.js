@@ -82,8 +82,8 @@ export const Greeting = ({ words1, words2, className }) => {
   
   return (
     <div className={cn('font-bold', className)}>
-      <div className="mt-4">
-        <div className="text-5xl leading-snug tracking-wide text-black dark:text-white">
+      <div className="mt-2">
+        <div className="text-4xl leading-snug tracking-wide text-black dark:text-white">
             {renderWords(words1Array, words1Controls)}
             {renderWords(words2Array, words2Controls)}
         </div>

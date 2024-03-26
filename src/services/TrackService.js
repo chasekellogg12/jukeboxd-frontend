@@ -30,6 +30,15 @@ const TrackService = { // UserService is an object that contains the asynchronou
             console.error('Error updating users top 4.');
             throw error;
         }
+    },
+    getRand10Tracks: async() => {
+        try {
+            const response = await axios.get('https://jukeboxd-4502c9ba8f0c.herokuapp.com/track/getRand10');
+            return response.data;
+        } catch(error) {
+            console.log('Error getting random 10 tracks');
+            throw error;
+        }
     }
 };
 export default TrackService;
