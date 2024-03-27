@@ -74,7 +74,7 @@ export default function Post(props) {
     if (isLoading) return <div>Loading...</div>
 
     return (
-        <div className='flex flex-col justify-between m-1 p-1 border rounded-lg shadow hover:shadow-lg post-container border-[#4950D5] bg-c-grey text-sh-grey shadow-sh-grey'>
+        <div id={props.postId} className='flex flex-col justify-between m-1 p-1 border rounded-lg shadow hover:shadow-lg post-container border-[#4950D5] bg-c-grey text-sh-grey shadow-sh-grey'>
             <div className='flex items-center m-1 content-container'>
                 <div className='mx-2 mt-1 mr-4 w-36 cover-art-container'>
                     <img src={postSubjectBasicInfo.albumCoverArt} alt='track cover art' style={{borderRadius: '8px'}}></img>

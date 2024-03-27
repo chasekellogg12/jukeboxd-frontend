@@ -113,8 +113,8 @@ export default function PostWall(props) {
                         <div className='flex justify-center my-6 text-lg'>There is nothing here yet.</div>
                     </div>
                 }
-                {listOfPosts.length !== 0 && listOfPosts[pageNumber].slice().map(post => ( // for every user in the list of users, put its name in its own div 
-                    <Post key={post.postId} passedData={[post, Array.isArray(props.passedData) ? props.passedData[1] : props.passedData]} onLikeClick={handleLikeClick} onDeleteLikeClick={handleDeleteLikeClick} onDeleteClick={handleDeletePost}/>
+                {listOfPosts.length !== 0 && listOfPosts[pageNumber].slice().map((post, index) => ( // for every user in the list of users, put its name in its own div 
+                    <Post postId={'postNumber'+(index+1)} key={post.postId} passedData={[post, Array.isArray(props.passedData) ? props.passedData[1] : props.passedData]} onLikeClick={handleLikeClick} onDeleteLikeClick={handleDeleteLikeClick} onDeleteClick={handleDeletePost}/>
                 ))}
                 {!sectionName && <div ref={bottomRef} className='flex justify-end w-full pr-2 space-x-3 page-iteration-container text-sh-grey'>
                     {pageNumber > 0 ? 
