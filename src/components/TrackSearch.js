@@ -81,17 +81,17 @@ export default function TrackSearch(props) {
                     <h1 className='text-lg text-white abrilfatface'>Find a Track</h1>
                     <form onSubmit={handleSearch}> 
                         <label className='space-x-2 poppins'>
-                            <input className='p-1 rounded-md text-c-grey' type='text' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-                            <button type='submit poppins'> Search </button>
+                            <input id='searchSongField' className='p-1 rounded-md text-c-grey' type='text' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                            <button id='searchButton' type='submit poppins'> Search </button>
                         </label>
                         
                     </form>
                     <button onClick={props.onClose} className='text-sm'>Close</button>
                     {areResultsShown && (
                         <div className='overflow-x-hidden overflow-y-auto max-h-96'>
-                            {searchResults.map(track => ( // for every track, get it's album cover art image 
+                            {searchResults.map((track, index) => ( // for every track, get it's album cover art image 
                                 <div key={track.id} className='mb-2.5'>
-                                    <button className='flex items-center space-x-3 text-sm text-left rounded-md hover:bg-dark-purple' onClick={() => handleSelect(track)}>
+                                    <button id={'selection' + (index+1)} className='flex items-center space-x-3 text-sm text-left rounded-md hover:bg-dark-purple' onClick={() => handleSelect(track)}>
                                         {track.album ? <img className='w-1/12 ml-0.5 rounded-md'src={track.album.images[0].url} alt='coverart'></img> : <img src={logo} alt='coverart'></img>}
                                         <div className='flex flex-col items-start justify-start'>
                                             <div className='flex items-center space-x-1 title'>

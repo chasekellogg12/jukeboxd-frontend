@@ -54,7 +54,7 @@ export default function CreatePostPage() {
                 {!postSubject ? 
                     <div className='flex flex-col items-center'>
                         <h3 className='mb-3 text-xl text-center text-white abrilfatface'>What track do you want to review?</h3>
-                        <button className='px-2 py-1 text-white rounded-lg bg-hov-blue hover:bg-dark-purple poppins' onClick={() => openPopup()}>Select Track</button>
+                        <button id='selectTrackButton' className='px-2 py-1 text-white rounded-lg bg-hov-blue hover:bg-dark-purple poppins' onClick={() => openPopup()}>Select Track</button>
                     </div> :
                     <div className='flex flex-col items-center space-y-6'>
                         <div className='flex flex-col items-center space-y-2'>
@@ -73,8 +73,8 @@ export default function CreatePostPage() {
                         </div>
                         <StarRating size={'text-3xl'} settingRating={setRating}/>
                         <form onSubmit={handleSubmit} className='flex items-center justify-center w-full space-x-2 poppins'> 
-                            <textarea placeholder='Share your thoughts with the world...'className='w-2/3 p-2 rounded-md resize-none text-c-grey' value={postText} onChange={(e) => setPostText(e.target.value)} />
-                            <button type='submit' className='px-2 py-1 text-white rounded-lg bg-hov-blue hover:bg-dark-purple'> 
+                            <textarea id='postTextInput' placeholder='Share your thoughts with the world...'className='w-2/3 p-2 rounded-md resize-none text-c-grey' value={postText} onChange={(e) => setPostText(e.target.value)} />
+                            <button id='postButton' type='submit' className='px-2 py-1 text-white rounded-lg bg-hov-blue hover:bg-dark-purple'> 
                                 Post 
                             </button>
                         </form>

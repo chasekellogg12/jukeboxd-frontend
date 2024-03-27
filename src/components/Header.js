@@ -75,7 +75,7 @@ export default function Header({ updateHeader }) { // we need to re-render the h
                     }  
                     {loggedIn && 
                         <li>
-                            <button className='hover:text-[#4950D5]' onClick={() => handleLogout()}>
+                            <button id='logoutButton' className='hover:text-[#4950D5]' onClick={() => handleLogout()}>
                                 Logout
                             </button>
                         </li>

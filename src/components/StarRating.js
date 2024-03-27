@@ -34,6 +34,7 @@ const StarRating = ({ totalStars = 5, fixedRating, size, settingRating }) => {
   
     return (
       <span
+        id={'star' + (index+1)}
         key={index}
         className={`${size} ${cursorStyle} ${isFullStar ? 'text-orange-400' : 'text-dark-purple'}`}
         onMouseOver={() => handleMouseOver(index + 1)}
