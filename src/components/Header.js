@@ -61,7 +61,7 @@ export default function Header({ updateHeader }) { // we need to re-render the h
                     </li> */}
                     {loggedIn &&     // clicking this should bring up popup
                         <li>
-                            <button className='hover:text-[#4950D5]' onClick={() => navigate('/create-post')}>
+                            <button id='createPostButtonId' className='hover:text-[#4950D5]' onClick={() => navigate('/create-post')}>
                                 Create Post
                             </button>
                         </li>

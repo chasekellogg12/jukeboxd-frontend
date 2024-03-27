@@ -108,26 +108,26 @@ export default function CreateUser({ updateHeader }) {
                     <form onSubmit={handleSubmit} className='flex flex-col items-center space-y-3'> 
                         <label>
                             <h3>Name</h3>
-                            <input className='p-1 text-black rounded-md poppins' maxLength='15' type='text' value={name} onChange={(e) => setName(e.target.value)} />
+                            <input id='nameFieldId' className='p-1 text-black rounded-md poppins' maxLength='15' type='text' value={name} onChange={(e) => setName(e.target.value)} />
                         </label>
                         <label>
                             <h3>Email</h3>
-                            <input className='p-1 text-black lowercase rounded-md poppins' maxLength='30' type='text' value={email} onChange={(e) => setEmail(e.target.value.toLowerCase())} />
+                            <input id='emailFieldId' className='p-1 text-black lowercase rounded-md poppins' maxLength='30' type='text' value={email} onChange={(e) => setEmail(e.target.value.toLowerCase())} />
                         </label>
                         <label>
                             <h3>Username</h3>
-                            <input className='p-1 text-black lowercase rounded-md poppins' maxLength='15' type='text' value={username} onChange={(e) => setUsername(e.target.value.toLowerCase())} />
+                            <input id='usernameFieldId' className='p-1 text-black lowercase rounded-md poppins' maxLength='15' type='text' value={username} onChange={(e) => setUsername(e.target.value.toLowerCase())} />
                         </label>
                         <label>
                             <h3>Password</h3>
-                            <input className='p-1 text-black rounded-md poppins' maxLength='15' type='password' value={password1} onChange={(e) => setPassword1(e.target.value)} />
+                            <input id='password1FieldId' className='p-1 text-black rounded-md poppins' maxLength='15' type='password' value={password1} onChange={(e) => setPassword1(e.target.value)} />
                         </label>
                         <label>
                             <h3>Confirm Password</h3>
-                            <input className='p-1 text-black rounded-md poppins' maxLength='15' type='password' value={password2} onChange={(e) => setPassword2(e.target.value)} />
+                            <input id='password2FieldId' className='p-1 text-black rounded-md poppins' maxLength='15' type='password' value={password2} onChange={(e) => setPassword2(e.target.value)} />
                         </label>
 
-                        <button type='submit' className='w-1/2 px-2 py-1 text-white rounded-lg bg-hov-blue hover:bg-dark-purple poppins'> 
+                        <button id='submitButtonId' type='submit' className='w-1/2 px-2 py-1 text-white rounded-lg bg-hov-blue hover:bg-dark-purple poppins'> 
                             Sign Up 
                         </button>
                     </form>
